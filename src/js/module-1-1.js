@@ -1,18 +1,18 @@
-// # ЗМІНІ
+// # ЗМІННІ
 
 //   Створіть змінну з ім'ям `myName` і присвойте їй ваше ім'я. Виведіть це ім'я в
-//    консоль.
+//   консоль.
 
 const myName = "Diana";
 console.log(`${myName}`);
 
 //   Створіть змінну `age` і присвойте їй ваш вік. Виведіть в консоль рядок, що
-//    містить ваш вік у такому форматі: "Мені {вік} років".
+//   містить ваш вік у такому форматі: "Мені {вік} років".
 
 const age = 28;
 console.log(`Мені ${age} років.`);
 
-// 1. Створіть змінні `x` і `y` і присвойте їм довільні числа. Виведіть в консоль
+//    Створіть змінні `x` і `y` і присвойте їм довільні числа. Виведіть в консоль
 //    результати додавання, віднімання, множення та ділення цих чисел.
 
 const x = Math.round(Math.random() * 100);
@@ -21,17 +21,10 @@ const y = Math.round(Math.random() * 100);
 console.log(x);
 console.log(y);
 
-const sum = x + y;
-console.log(sum);
-
-const difference = x - y;
-console.log(difference);
-
-const product = x * y;
-console.log(product);
-
-const quotient = +(x / y).toFixed(2);
-console.log(quotient);
+console.log(x + y);
+console.log(x - y);
+console.log(x * y);
+console.log(+(x / y).toFixed(2));
 // .toFixed() повертає String, тому "+"" конвертує його в Number
 
 //    Створіть змінну `city` і присвойте їй назву вашого міста. Створіть рядок,
@@ -65,6 +58,30 @@ const fullName = `${firstName} ${lastName}`;
 
 console.log(fullName);
 
+// ```
+// Створи дві змінні a і b, присвой їм якісь цілі числа.
+// Виконай над ними додавання, віднімання, множення і ділення.
+// Запиши результати в змінні sum, difference, product, quotient.
+// Виведи всі ці результати в консоль.
+// ```
+const a = Math.round(Math.random() * 100);
+const b = Math.round(Math.random() * 100);
+
+console.log(a);
+console.log(b);
+
+const sum = a + b;
+console.log(sum);
+
+const difference = a - b;
+console.log(difference);
+
+const product = a * b;
+console.log(product);
+
+const quotient = +(a / b).toFixed(2);
+console.log(quotient);
+
 // ---
 
 // ```
@@ -86,7 +103,12 @@ console.log(area.toFixed(2));
 // Обчисли довжину цього рядка, використовуючи властивість .length.
 // Виведи довжину рядка в консоль.
 // ```
+const someString = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`
+  .repeat(10)
+  .slice(0, 100);
 
+console.log(someString);
+console.log(someString.length); // 100
 // ---
 
 // ```
@@ -94,7 +116,11 @@ console.log(area.toFixed(2));
 // Створи змінну firstLetter і присвой їй першу літеру рядка someString.
 // Створи змінну lastLetter і присвой їй останню літеру рядка someString.
 // ```
-
+const firstLetter = someString[0];
+console.log(firstLetter);
+const lastLetter = someString[someString.length - 1];
+console.log(lastLetter);
+console.log(someString);
 // ---
 
 // ```
@@ -103,7 +129,10 @@ console.log(area.toFixed(2));
 // Створи третю змінну де обєднай попередні літери
 // Приклад: для рядків "HELLO" та "WORLD" результатом буде рядок "OD"
 // ```
-
+const str1 = "Hello";
+const str2 = "World";
+const str3 = str1[str1.length - 1] + str2[str2.length - 1];
+console.log(str3);
 // ---
 
 // ```
@@ -119,21 +148,26 @@ console.log(area.toFixed(2));
 // для числа 512 = 512 * 5^3 = 64000;
 
 // ```
-
+const userValue = 23;
+const res = 23 * 5 ** Number(String(userValue).length);
+console.log(res);
 // ---
 
 // ```
-// Виведіть на екран загальну кількість яблок і винограду. Різницю яблока і винограду теж виведіть у консоль.
-
+// Виведіть на екран загальну кількість яблук і винограду. Різницю яблука і винограду теж виведіть у консоль.
 // const apples = 47;
 // const grapes = 135;
 // const total = ;
 // console.log(total)
 // const diff = ;
 // console.log(diff)
-
 // ```
-
+const apples = 47;
+const grapes = 135;
+const total = apples + grapes;
+console.log(total);
+const diff = apples - grapes;
+console.log(diff);
 // ---
 
 // ```
@@ -143,7 +177,9 @@ console.log(area.toFixed(2));
 // students = students + 50;
 // console.log(students);
 // ```
-
+let students = 100;
+students += 50;
+console.log(students);
 // ---
 
 // ```
@@ -166,3 +202,8 @@ console.log(area.toFixed(2));
 // const message = ``;
 // console.log(message); // "Cyberdyne Systems has 200 bots in stock"
 // ```
+const companyName = "Cyberdyne Systems";
+const repairBots = 150;
+const defenceBots = 50;
+const message = `${companyName} has ${repairBots + defenceBots} bots in stock`;
+console.log(message); // "Cyberdyne Systems has 200 bots in stock"
