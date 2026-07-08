@@ -66,11 +66,39 @@ filterWords(fruits, startsWithA, (result) => {
 //    `capitalizeStrings(strings, callback)`, яка приймає масив рядків `strings` та
 //    колбек `callback`. Функція повинна перетворити всі рядки в масиві, роблячи
 //    першу літеру кожного рядка великою, і передати перетворений масив в колбек.
+function capitalizeStrings(strings, callback) {
+  const capitStr = strings.map(
+    (string) => string[0].toUpperCase() + string.slice(1)
+  );
+  callback(capitStr);
+}
+
+// Приклад використання
+function printResult(result) {
+  console.log(result);
+}
+
+capitalizeStrings(["apple", "banana", "orange"], printResult);
+//["Apple", "Banana", "Orange"]
 
 // 5. **Сортування чисел:** Напишіть функцію `sortNumbers(numbers, callback)`, яка
 //    приймає масив чисел `numbers` та колбек `callback`. Функція повинна
 //    відсортувати числа в масиві за зростанням та передати відсортований масив у
 //    колбек.
+function sortNumbers(numbers, callback) {
+  const sortedNum = numbers.toSorted((a, b) => a - b);
+  // toSorted() -це метод, який приймає функцію порівняння.
+  // Якщо її не передати, числа будуть сортуватися як рядки.
+  // Коли ти пишеш a - b, тo буквально кажеш: "Якщо a більше за b, результат буде додатним, тому посунь a праворуч (в кінець)". Так усе велике зміщується в кінець (зростання).
+  // Коли ти пишеш b - a, тo робиш навпаки: якщо a більше за b, результат буде від'ємним, і JS залишить велике a попереду (спадання).
+  callback(sortedNum);
+}
+
+const printedOut = (arr) => {
+  console.log(arr);
+};
+
+sortNumbers([1, 4, 0, 3, 12], printedOut); //[0, 1, 3, 4, 12]
 
 // 6. **Пошук максимуму:** Напишіть функцію `findMax(numbers, callback)`, яка
 //    приймає масив чисел `numbers` та колбек `callback`. Функція повинна знайти
