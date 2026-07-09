@@ -38,10 +38,24 @@ for (let i = 1; i <= userNum; i++) {
 }
 console.log(product);
 // 1. Напиши цикл, який виведе кожну другу літеру рядочку "Hello world"
+const helloWorld = "Hello world";
+for (let i = 0; i < helloWorld.length; i += 2) {
+  console.log(helloWorld[i]);
+}
 // 1. Напиши цикл, який виведе кожну літеру рядочку "Hello world" у зворотньому
 //    порядку.
+for (let i = helloWorld.length - 1; i > -1; i--) {
+  console.log(helloWorld[i]);
+}
 // 1. Напиши цикл, який виведе кожну літеру рядочку "Hello world" поки не зустріне
 //    пробіл.
+let counter = 0;
+
+// Додаємо умову (counter < helloWorld.length), щоб цикл не вийшов за межі рядка
+while (counter < helloWorld.length && helloWorld[counter] !== " ") {
+  console.log(helloWorld[counter]);
+  counter++;
+}
 // 1. Напиши цикл, який виведе на консоль кожну другу літеру слова "JavaScript".
 
 // 1. Напиши функцію, яка приймає рядок та повертає перевернутий рядок
