@@ -57,9 +57,45 @@ while (counter < helloWorld.length && helloWorld[counter] !== " ") {
   counter++;
 }
 // 1. Напиши цикл, який виведе на консоль кожну другу літеру слова "JavaScript".
-
+counter = 0;
+const JS = "JavaScript";
+while (counter < JS.length) {
+  if (counter % 2 === 0) {
+    console.log(JS[counter]);
+  }
+  counter++;
+}
 // 1. Напиши функцію, яка приймає рядок та повертає перевернутий рядок
+
+function reverseString(directString) {
+  if (typeof directString === "string") {
+    return directString.split("").reverse().join("");
+  }
+}
+const miniString = "hello";
+const reversed = reverseString(miniString);
+console.log(reversed); //olleh
 // 1. Напиши функцію, яка приймає рядок та повертає рядок де кожен другий символ у
 //    верхньому регістрі
+function everySecondToUpperCase(str) {
+  const letters = str.split("");
+
+  for (let i = 1; i < letters.length; i += 2) {
+    letters[i] = letters[i].toUpperCase();
+  }
+
+  return letters.join("");
+}
+everySecondToUpperCase(miniString);
+console.log(miniString); //oLlEh
 // 1. Напиши функцію getString(str1, str2, count). Функція повинна додати str2 до
 //    рядочка str1 стільки разів скільки вказали у параметрі count.
+function getString(str1, str2, count) {
+  let counter = 1;
+  while (counter <= count) {
+    str1 = str1 + str2;
+    counter++;
+  }
+  return str1;
+  //return str1 + str2.repeat(count);
+}
