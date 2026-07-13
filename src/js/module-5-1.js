@@ -104,27 +104,76 @@ sortNumbers([1, 4, 0, 3, 12], printedOut); //[0, 1, 3, 4, 12]
 //    приймає масив чисел `numbers` та колбек `callback`. Функція повинна знайти
 //    максимальне число в масиві та передати його в колбек.
 
+function findMax(numbers, callback) {
+  const toCallback = Math.max(...numbers);
+  return callback(toCallback);
+}
+
+const arrOfNumbers = [1, 13, 23, 0.1];
+// Передаємо console.log як посилання на функцію (без круглих дужок)
+findMax(arrOfNumbers, console.log);
+
 // 7. **Перевірка на парність:** Напишіть функцію `checkEven(numbers, callback)`,
 //    яка приймає масив чисел `numbers` та колбек `callback`. Функція повинна
 //    перевірити, чи всі числа в масиві парні, і передати результат перевірки
 //    колбек.
 
+function checkEven(numbers, callback) {
+  // Метод every поверне true, якщо кожне число ділиться на 2 без остачі
+  const allEven = numbers.every((number) => number % 2 === 0);
+
+  // Передаємо цей результат (true або false) у колбек
+  return callback(allEven);
+}
+
+// Перевірка:
+const arr1 = [2, 4, 6, 8];
+const arr2 = [2, 4, 7, 8];
+
+checkEven(arr1, console.log); // Виведе: true
+checkEven(arr2, console.log); // Виведе: false
 // 8. **Об'єднання рядків:** Напишіть функцію
 //    `concatStrings(strings, separator, callback)`, яка приймає масив рядків
 //    `strings`, рядок `separator` та колбек `callback`. Функція повинна об'єднати
 //    рядки з масиву, розділяючи їх переданим роздільником, і передати рядок, що
 //    вийшов, в колбек.
+function concatStrings(strings, separator, callback) {
+  const toCallback = strings.join(separator);
+  return callback(toCallback);
+}
+
+// Перевірка роботи функції:
+const words = ["Привіт", "світ", "JavaScript"];
+
+// Використовуємо пробіл як роздільник
+concatStrings(words, " ", console.log);
 
 // 9. **Перетворення в числа:** Напишіть функцію `parseNumbers(strings, callback)`,
 //    яка приймає масив рядків `strings` та колбек `callback`. Функція повинна
 //    перетворити кожен рядок з масиву на число і передати новий масив чисел в
 //    колбек.
 
+function parseNumbers(strings, callback) {
+  const intoNumbers = strings.map((string) => Number(string));
+  return callback(intoNumbers);
+}
+
+const arrayOfStr = ["1", "2", "3"];
+parseNumbers(arrayOfStr, console.log);
 // 10. **Підрахунок символів:** Напишіть функцію
 //     `countCharacters(strings, callback)`, яка приймає масив рядків `strings` та
 //     колбек `callback`. Функція повинна підрахувати загальну кількість символів у
 //     всіх рядках масиву та передати результат у колбек.
+function countCharacters(strings, callback) {
+  let len = 0;
+  // Заміна 'in' на 'of'
+  for (const string of strings) {
+    len += string.length;
+  }
+  return callback(len);
+}
 
+countCharacters(["123", "oppa"], console.log); //7
 // ---
 
 // # Codewars
