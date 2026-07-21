@@ -263,16 +263,16 @@ function isDividedBy10(num) {
 // ## Task 1
 
 // Напиши скрипт, який виводить у консоль заокруглені вгору/вниз і т.д. значення
-// змінної `value`. Використовуй методи `Math.floor()`, `Math.ceil()` та
+// змінної `value1`. Використовуй методи `Math.floor()`, `Math.ceil()` та
 // `Math.round()`. Перевір що буде в консолі при значеннях `27.3` та `27.9`.
 
 // ```js
-// const value = 27.5;
+// const value1 = 27.5;
 // ```
-const value = 27.5;
-console.log(Math.floor(value)); // 27
-console.log(Math.ceil(value)); // 28
-console.log(Math.round(value)); // 28
+const value1 = 27.5;
+console.log(Math.floor(value1)); // 27
+console.log(Math.ceil(value1)); // 28
+console.log(Math.round(value1)); // 28
 // ---
 
 // ## Task 2
@@ -323,16 +323,18 @@ console.log(Math.round(value)); // 28
 // - 1441 покаже 24:01
 
 // ```js
-// const totalMinutes = 70;
+const totalMinutes = 70;
 
-// const hours = Math.floor(totalMinutes / 60);
-// const minutes = totalMinutes % 60;
-// console.log(hours);
-// console.log(minutes);
+const hours = Math.floor(totalMinutes / 60);
+const minutes = totalMinutes % 60;
+console.log(hours);
+console.log(minutes);
 
-// const doubleDigitHours = String(hours).padStart(2, 0);
-// const doubleDigitMinutes = String(minutes).padStart(2, 0);
-// console.log(`${doubleDigitHours}:${doubleDigitMinutes}`);
+// .padStart(2, 0): Метод доповнює рядок до потрібної довжини (2 символи),
+// додаючи на початок вказаний символ (0)
+const doubleDigitHours = String(hours).padStart(2, 0);
+const doubleDigitMinutes = String(minutes).padStart(2, 0);
+console.log(`${doubleDigitHours}:${doubleDigitMinutes}`);
 // ```
 
 // ---
@@ -346,18 +348,77 @@ console.log(Math.round(value)); // 28
 // Використовуй оператор "?" (nullish coalescing operator).
 
 // ```js
-// const incomingValue = 5;
-// const defaultValue = 10;
-// const value = incomingValue || defaultValue;
-// console.log(value);
-// ```
-
+const incomingValue = 5;
+const defaultValue = 10;
+const value = incomingValue ?? defaultValue;
+console.log(value);
+//     || (або) вважає «хибними» всі так звані falsy - значення:
+//     null, undefined, 0, false, ""(порожній рядок) та NaN.
+// Якщо incomingValue дорівнює 0 або false,
+// оператор || підставить defaultValue(10),
+// хоча за умовою завдання $0$ та $false$ мають зберігатися! ??
+// (nullish coalescing) реагує тільки на null та undefined.
+// Усі інші значення(включаючи 0 та false) він вважає дійсними і зберігає їх.
 // ---
 
 // ## CodeWars
 
 // 1. [Kata](https://www.codewars.com/kata/55fab1ffda3e2e44f00000c6)
-// 1. [Kata](https://www.codewars.com/kata/5748838ce2fab90b86001b1a)
-// 1. [Kata](https://www.codewars.com/kata/55f9bca8ecaa9eac7100004a)
-// 1. [Kata](https://www.codewars.com/kata/55a5befdf16499bffb00007b/train/javascript)
-// 1. [Kata](https://www.codewars.com/kata/5bb0c58f484fcd170700063d)
+// Write a function which takes its speed in km per hour
+// and returns it in cm per second, rounded down to the integer(= floored).
+function cockroachSpeed(velocity) {
+  // Множимо швидкість velocity на (100000 / 3600) і заокруглюємо до меншого цілого
+  return Math.floor((velocity * 100000) / 3600);
+}
+// 2. [Kata](https://www.codewars.com/kata/5748838ce2fab90b86001b1a)
+// Завдання: Площа квадрата
+// Напиши функцію, яка обчислює площу квадрата за заданою довжиною дуги кола A.
+// Дуга A становить чверть($1 / 4$) від повної довжини кола,
+// а радіус цього кола дорівнює стороні квадрата.
+// Вимоги:Використовувати вбудоване значення $\pi$(Math.PI).
+// Округлити результат до 2 знаків після коми.
+function squareArea(A) {
+  // додаємо +, щоб перетворити на число, бо метод toFixed повертає string
+  return +(((A * 2) / Math.PI) ** 2).toFixed(2);
+}
+// 3. [Kata](https://www.codewars.com/kata/55f9bca8ecaa9eac7100004a)
+// to write a function which returns the time in milliseconds
+function timeInMilliseconds(hours, minutes, seconds) {
+  let time = 0;
+  time += (hours * 60 * 60 + minutes * 60 + seconds) * 1000;
+  return time;
+}
+// 4. [Kata](https://www.codewars.com/kata/55a5befdf16499bffb00007b/train/javascript)
+function add(a, b) {
+  return a + b;
+}
+
+function subt(a, b) {
+  return a - b;
+}
+
+function divide(a, b) {
+  return a / b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function mod(a, b) {
+  return a % b; // остача від ділення
+}
+
+function exponent(a, b) {
+  return a ** b;
+}
+// 5. [Kata](https://www.codewars.com/kata/5bb0c58f484fcd170700063d)
+// Задача про відстань між стовпами (pillars),
+// не враховуючи саму ширину першого і останнього стовпів
+
+function pillars(numPill, dist, widthPill) {
+  // Якщо стовп 1 або менше, відстань 0
+  if (numPill <= 1) return 0;
+  // Відстань у проміжках (переводимо метри в см) + ширина внутрішніх (!!!) стовпів
+  return (numPill - 1) * dist * 100 + (numPill - 2) * widthPill;
+}
