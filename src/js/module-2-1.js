@@ -68,8 +68,7 @@ function rainyToday(isRaining, hasUmbrella) {
 function evaluateStudent(grade) {
   if (grade < 0 || grade > 100) {
     return "Некоректна оцінка";
-  }
-  if (grade >= 90) {
+  } else if (grade >= 90) {
     return "Відмінно";
   } else if (grade <= 75) {
     return "Добре";
@@ -92,6 +91,13 @@ function whatDay(dayOfWeek, isHoliday) {
     return "Робочий день";
   }
 }
+
+// другий спосіб - через Early return
+function whatDay2(dayOfWeek, isHoliday) {
+  if (dayOfWeek === "Saturday" || dayOfWeek === "Sunday" || isHoliday)
+    return "Вихідний";
+  return "Робочий день";
+}
 // ```
 // Задача-8
 // Напишіть функцію, яка приймає один параметр year.
@@ -105,6 +111,14 @@ function isLeapYear(year) {
     return "Звичайний рік";
   }
 }
+
+// другий спосіб - через Early return
+function isLeapYear2(year) {
+  if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0)
+    return "Високосний рік";
+  return "Звичайний рік";
+}
+
 ```
 Чому це не просто вигадка?
 Земля робить повний оберт навколо Сонця не рівно за 365 днів, а за 365 днів, 5 годин, 48 хвилин і 46 секунд (приблизно 365.2422 днів).
@@ -132,6 +146,13 @@ function passed(hasInvitation, isFriend) {
     return "Вхід заборонено";
   }
 }
+
+// другий спосіб - через Early return
+function passed2(hasInvitation, isFriend) {
+  if (hasInvitation || isFriend) return "Ви запрошені";
+  return "Вхід заборонено";
+}
+
 // ```
 // Задача-10
 // Напишіть функцію, яка приймає вік особи (age). Якщо вік менший за 12,
