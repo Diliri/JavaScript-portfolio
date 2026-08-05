@@ -666,7 +666,28 @@ function typeOfVehicle(vehicleType) {
 // введеної тварини. Наприклад, "Кішка", "Собака", "Кінь" - "Ссавець", "Голуб",
 // "Орлан", "Горобець" - "Птах", "Лосось", "Тунець", "Тріска" - "Риба", "Ящірка",
 // "Черепаха", "Змія" - "Рептилія".
-
+function getAnimalClass(animal) {
+  switch (animal) {
+    case "Кішка":
+    case "Собака":
+    case "Кінь":
+      return "Ссавець";
+    case "Голуб":
+    case "Орлан":
+    case "Горобець":
+      return "Птах";
+    case "Лосось":
+    case "Тунець":
+    case "Тріска":
+      return "Риба";
+    case "Ящірка":
+    case "Черепаха":
+    case "Змія":
+      return "Рептилія";
+    default:
+      return "Невідома тварина";
+  }
+}
 // ```
 // Задача-47
 // Напишіть функцію, яка приймає один параметр weather. Використовуючи switch,
@@ -674,7 +695,20 @@ function typeOfVehicle(vehicleType) {
 // типу погоди. Наприклад, "Sunny" - "Сонячно", "Cloudy" - "Хмарно", "Rainy" - "Дощ",
 // "Snowy" - "Сніг".
 // ```
-
+function getWeather(weather) {
+  switch (weather) {
+    case "Sunny":
+      return "Сонячно";
+    case "Cloudy":
+      return "Хмарно";
+    case "Rainy":
+      return "Дощ";
+    case "Snowy":
+      return "Сніг";
+    default:
+      return "Невідома погода";
+  }
+}
 // ```
 // Задача-48
 // Напишіть функцію, яка приймає один параметр mood. Використовуючи switch,
@@ -682,7 +716,20 @@ function typeOfVehicle(vehicleType) {
 // введеного настрою. Наприклад, "Happy" - "Щасливий", "Sad" - "Сумний",
 // "Angry" - "Злий", "Surprised" - "Здивований".
 // ```
-
+function getMood(mood) {
+  switch (mood) {
+    case "Happy":
+      return "Щасливий";
+    case "Sad":
+      return "Сумний";
+    case "Angry":
+      return "Злий";
+    case "Surprised":
+      return "Здивований";
+    default:
+      return "Невідомий настрій";
+  }
+}
 // ```
 // Задача-49
 // Напишіть функцію, яка приймає один параметр month. Використовуючи switch,
@@ -691,7 +738,28 @@ function typeOfVehicle(vehicleType) {
 // "Серпень" - "Літо", "Вересень", "Жовтень", "Листопад" - "Осінь", "Грудень",
 // "Січень", "Лютий" - "Зима".
 // ```
-
+function getSeason(month) {
+  switch (month) {
+    case "Березень":
+    case "Квітень":
+    case "Травень":
+      return "Весна";
+    case "Червень":
+    case "Липень":
+    case "Серпень":
+      return "Літо";
+    case "Вересень":
+    case "Жовтень":
+    case "Листопад":
+      return "Осінь";
+    case "Грудень":
+    case "Січень":
+    case "Лютий":
+      return "Зима";
+    default:
+      return "Невідомий місяць";
+  }
+}
 // ```
 // Задача-50
 // Напишіть функцію, яка приймає один параметр color. Використовуючи switch,
@@ -699,12 +767,41 @@ function typeOfVehicle(vehicleType) {
 // Наприклад, "Red", "Orange", "Yellow" - "Теплий колір", "Blue", "Green",
 // "Purple" - "Холодний колір".
 // ```
-
+function getColorType(color) {
+  switch (color) {
+    case "Red":
+    case "Orange":
+    case "Yellow":
+      return "Теплий колір";
+    case "Blue":
+    case "Green":
+    case "Purple":
+      return "Холодний колір";
+    default:
+      return "Невідомий колір";
+  }
+}
 // ```
 // Задача-51
-// Напишіть функцію, яка приймає один параметр continent. Використовуючи switch, поверніть назву континенту або "Невідомий континент" в залежності від введеного значення. Наприклад, "Africa", "Europe", "Asia", "North America", "South America", "Antarctica", "Australia" - відомі континенти, інші випадки - "Невідомий континент".
+// Напишіть функцію, яка приймає один параметр continent. Використовуючи switch,
+// поверніть назву континенту або "Невідомий континент" в залежності від введеного
+// значення. Наприклад, "Africa", "Europe", "Asia", "North America", "South America",
+// "Antarctica", "Australia" - відомі континенти, інші випадки - "Невідомий континент".
 // ```
-
+function isContinent(continent) {
+  switch (continent) {
+    case "Africa":
+    case "Europe":
+    case "Asia":
+    case "North America":
+    case "South America":
+    case "Antarctica":
+    case "Australia":
+      return "Відомий континент";
+    default:
+      return "Невідомий континент";
+  }
+}
 // ---
 
 // ## Task 1
@@ -758,9 +855,9 @@ function typeOfVehicle(vehicleType) {
 // ```js
 // console.log(!true); // false
 // console.log(!false); // true
-// console.log(!3); // 0
-// console.log(!'Mango'); // ''
-// console.log(!0); // 1
+// console.log(!3); // FALSE
+// console.log(!'Mango'); // FALSE
+// console.log(!0); // TRUE
 // console.log(!''); // true
 
 // const isOnline = true;
@@ -781,25 +878,25 @@ function typeOfVehicle(vehicleType) {
 // console.log(!!true); // true
 // console.log(!!false); // false
 
-// console.log(1 === 1 && 2 === 2);
-// console.log(1 === 2 && 2 === 2);
-// console.log(1 === 1 || 2 === 2);
-// console.log(1 === 2 || 2 === 2);
+// console.log(1 === 1 && 2 === 2); // true
+// console.log(1 === 2 && 2 === 2); // false
+// console.log(1 === 1 || 2 === 2); // true зліва
+// console.log(1 === 2 || 2 === 2); // true зправа
 
-// console.log(1 > 2 && 2 < 3);
-// console.log(1 < 2 && 2 < 3);
-// console.log(1 > 2 || 2 < 3);
-// console.log(1 < 2 || 2 < 3);
+// console.log(1 > 2 && 2 < 3); // false
+// console.log(1 < 2 && 2 < 3); // true
+// console.log(1 > 2 || 2 < 3); // true зправа
+// console.log(1 < 2 || 2 < 3); // true зліва
 
-// console.log(0 && 3);
-// console.log(3 && 0);
-// console.log(0 || 3);
-// console.log(3 || 0);
+// console.log(0 && 3); // 0
+// console.log(3 && 0); // 0
+// console.log(0 || 3); // 3
+// console.log(3 || 0); // 3
 
-// console.log('' || 'apple');
-// console.log('orange' || '');
-// console.log('' && 'banana');
-// console.log('grape' && '');
+// console.log('' || 'apple'); // 'apple'
+// console.log('orange' || ''); // 'orange'
+// console.log('' && 'banana'); // ''
+// console.log('grape' && ''); // ''
 
 // console.log(0 || false); //false
 // console.log(false || 0); // 0
@@ -811,18 +908,18 @@ function typeOfVehicle(vehicleType) {
 // console.log('melon' || null); // 'melon'
 // console.log(undefined && false); // undefined
 // console.log(true || 'watermelon'); // true
-// console.log('watermelon' || true);
-// console.log(false && 'pineapple');
-// console.log('pineapple' && false);
-// console.log(NaN || 'kiwi');
-// console.log('kiwi' || NaN);
-// console.log(NaN && 'mango');
-// console.log('mango' && NaN);
-// console.log(Infinity || 'apricot');
-// console.log('apricot' || Infinity);
-// console.log(Infinity && 'blueberry');
-// console.log('blueberry' && Infinity);
-// console.log(null || undefined);
+// console.log('watermelon' || true); // 'watermelon'
+// console.log(false && 'pineapple'); // false
+// console.log('pineapple' && false); // false
+// console.log(NaN || 'kiwi'); // 'kiwi'
+// console.log('kiwi' || NaN); // 'kiwi'
+// console.log(NaN && 'mango'); // NaN
+// console.log('mango' && NaN); // NaN
+// console.log(Infinity || 'apricot'); // 'apricot'
+// console.log('apricot' || Infinity); // 'apricot'
+// console.log(Infinity && 'blueberry'); // 'blueberry'
+// console.log('blueberry' && Infinity); // Infinity = TRUTHY
+// console.log(null || undefined); // undefined
 // ```
 
 // ---
