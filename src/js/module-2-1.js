@@ -927,5 +927,37 @@ function isContinent(continent) {
 // ## Codewars
 
 // 1. [Kata](https://www.codewars.com/kata/5672a98bdbdd995fad00000f)
+// камінь-ножиці-папір
+// 1. Масив можливих ходів
+const moves = ["rock", "paper", "scissors"];
+
+// 2. Функція для вибору випадкового ходу
+function getRandomMove() {
+  const randomIndex = Math.floor(Math.random() * moves.length);
+  return moves[randomIndex];
+}
+
+// 3. Функція перевірки переможця
+const rps = (p1, p2) => {
+  if (p1 === p2) return "Draw!";
+
+  const winsAgainst = {
+    rock: "scissors",
+    scissors: "paper",
+    paper: "rock",
+  };
+
+  return winsAgainst[p1] === p2 ? "Player 1 won!" : "Player 2 won!";
+};
+
+// --- Приклад використання ---
+
+// Гравець 1 обирає сам, а Гравець 2 (комп'ютер) робить випадковий хід:
+const player1Move = "rock";
+const player2Move = getRandomMove();
+
+console.log(`Player 1: ${player1Move}`);
+console.log(`Player 2: ${player2Move}`);
+console.log(`Result: ${rps(player1Move, player2Move)}`);
 // 1. [Kata](https://www.codewars.com/kata/5a3fe3dde1ce0e8ed6000097)
 // 1. [Kata](https://www.codewars.com/kata/55f9b48403f6b87a7c0000bd/train/javascript)
