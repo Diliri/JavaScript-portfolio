@@ -960,4 +960,11 @@ console.log(`Player 1: ${player1Move}`);
 console.log(`Player 2: ${player2Move}`);
 console.log(`Result: ${rps(player1Move, player2Move)}`);
 // 1. [Kata](https://www.codewars.com/kata/5a3fe3dde1ce0e8ed6000097)
+function century(year) {
+  return Math.ceil(year / 100);
+}
 // 1. [Kata](https://www.codewars.com/kata/55f9b48403f6b87a7c0000bd/train/javascript)
+function paperwork(n, m) {
+  if (n < 0 || m < 0) return 0;
+  return n * m;
+}
