@@ -171,9 +171,77 @@ console.log(dividedByThree([3, "hello"])); // "В масиві мають бут
 // ## Середні задачі
 
 // 12. Напиши функцію яка приймає два масиви (arr1, arr2), та повертає новий масив
-//    де будуть лише ті елементи які зустрічаються і в arr1 і arr2.
+//    де будуть лише ті елементи які зустрічаються і в arr1, і arr2.
+function includesEl_1(arr1, arr2) {
+  const arr3 = [];
+  for (const el1 of arr1) {
+    // використовуємо for...of
+    for (const el2 of arr2) {
+      if (el1 === el2) {
+        arr3.push(el1);
+        break;
+        // зупиняємо внутрішній цикл, щоб уникнути дублікатів,
+        // якщо el1 зустрічається кілька разів в arr2
+      }
+    }
+  }
+  return arr3;
+}
+function includesEl_2(arr1, arr2) {
+  const arr3 = arr1.filter((el) => arr2.includes(el));
+  return arr3;
+}
+// Якщо потрібно отримувати лише унікальні спільні елементи,
+// то результат можна додатково загорнути в Set:
+function includesEl_3(arr1, arr2) {
+  const arr3 = arr1.filter((el) => arr2.includes(el));
+  const uniqueResult = [...new Set(arr3)];
+  return uniqueResult;
+}
+
 // 13. Напиши функцію яка приймає два масиви (arr1, arr2), та повертає новий масив
-//    де будуть лише елементи масиву arr1 яких не має у масиві arr2.
+//    де будуть лише елементи масиву arr1, яких немає у масиві arr2.
+function isNotAbleEl_1(arr1, arr2) {
+  return arr1.filter((el) => !arr2.includes(el));
+}
+function isNotAbleEl_2(arr1, arr2) {
+  const result = [];
+  for (const el1 of arr1) {
+    let found = false;
+    for (const el2 of arr2) {
+      if (el1 === el2) {
+        found = true;
+        break; // Знайшли збіг — далі шукати в arr2 немає сенсу
+      }
+    }
+    // Якщо елемента el1 не було в arr2 — додаємо його в результат
+    if (!found) {
+      result.push(el1);
+    }
+  }
+  return result;
+}
+function isNotAbleEl_3(arr1, arr2) {
+  const result = [];
+  for (const el of arr1) {
+    // Якщо елемента з arr1 немає в arr2 — додаємо його в result
+    if (!arr2.includes(el)) {
+      result.push(el);
+    }
+  }
+  return result;
+}
+
+function getDifference(arr1, arr2) {
+  const result = [];
+  for (const el1 of arr1) {
+    // Метод indexOf повертає -1, якщо елемент не знайдено
+    if (arr2.indexOf(el1) === -1) {
+      result.push(el1);
+    }
+  }
+  return result;
+}
 // 14. Напиши функцію яка приймає масив та знаходить мінімальний елемент.
 // 15. Напиши функцію яка приймає масив та знаходить максимальний елемент.
 // 16. Напиши функцію яка приймає масив та повертає масив лише з тих елементів які
