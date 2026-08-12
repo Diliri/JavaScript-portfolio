@@ -261,6 +261,19 @@ function returnMin(arr) {
   // Знаходимо мінімальний елемент
   return Math.min(...arr);
 }
+
+// через цикл - найбільша швидкодія
+function findMinLoop(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return null;
+  let maxEl = arr[0]; // Беремо перший елемент за початковий мінімум
+  for (const el of arr) {
+    if (el < minEl) {
+      minEl = el;
+    }
+  }
+  return minEl;
+}
+
 // 15. Напиши функцію яка приймає масив та знаходить максимальний елемент.
 function returnMax(arr) {
   // Перевіряємо, чи передано масив
@@ -283,7 +296,20 @@ function returnMax(arr) {
 
 // Через метод reduce
 function findMaxReduce(arr) {
+  if (!arr || arr.length === 0) return null;
   return arr.reduce((max, current) => (current > max ? current : max));
+}
+
+// for loop - має найбільшу швидкодію
+function findMaxLoop(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return null;
+  let maxEl = arr[0]; // Беремо перший елемент за початковий максимум
+  for (const el of arr) {
+    if (el > maxEl) {
+      maxEl = el;
+    }
+  }
+  return maxEl;
 }
 // 16. Напиши функцію яка приймає масив та повертає масив лише з тих елементів які
 //    більші за середнє значення всіх елементів масиву.
