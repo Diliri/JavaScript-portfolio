@@ -313,6 +313,31 @@ function findMaxLoop(arr) {
 }
 // 16. Напиши функцію яка приймає масив та повертає масив лише з тих елементів які
 //    більші за середнє значення всіх елементів масиву.
+function biggerThanAverage(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return null;
+  let sum = 0;
+  for (const el of arr) {
+    sum += el;
+  }
+  const average = sum / arr.length;
+  const resArray = [];
+  for (const el of arr) {
+    if (el > average) {
+      resArray.push(el);
+    }
+  }
+  return resArray;
+}
+
+// сучасний варіант від gemini
+function biggerThanAverage(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return null;
+  // 1. Знаходимо середнє значення
+  const average = arr.reduce((sum, el) => sum + el, 0) / arr.length;
+  // 2. Фільтруємо елементи, які більші за середнє
+  return arr.filter((el) => el > average);
+}
+
 // 17. Напиши функцію яка приймає масив та повертає масив лише з тих елементів які
 //    більші за власний індекс.
 // 18. Напишіть функці яка приймає масив чисел. Функція повинна занйти мінімальний
