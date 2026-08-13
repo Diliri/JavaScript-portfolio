@@ -340,8 +340,41 @@ function biggerThanAverage(arr) {
 
 // 17. Напиши функцію яка приймає масив та повертає масив лише з тих елементів які
 //    більші за власний індекс.
-// 18. Напишіть функці яка приймає масив чисел. Функція повинна занйти мінімальний
+function elementsBiggerThanTheirIndexes(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return "введіть список чисел";
+  const res = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > i) {
+      res.push(arr[i]);
+    }
+  }
+  return res;
+}
+// метод filter:
+function filterMethodElementsBiggerThanTheirIndexes(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return "введіть список чисел";
+  return arr.filter((el, index) => el > index);
+}
+
+// 18. Напишіть функцію, яка приймає масив чисел. Функція повинна знайти мінімальний
 //    елемент та видалити його з масиву.
+function delThrMin(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return "Введіть масив чисел";
+  // 1. Знаходимо індекс мінімального елемента
+  let minIndex = 0;
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < arr[minIndex]) {
+      minIndex = i;
+    }
+  }
+
+  // 2. Видаляємо 1 елемент за знайденим індексом
+  arr.splice(minIndex, 1);
+
+  // 3. Повертаємо оновлений масив
+  return arr;
+}
+
 // 19. Напиши функцію яка приймає два параметри start та end. Функія повина
 //    повернути масив де будуть числа з діапазону але лише ті у яких не має
 //    цифри 5. К прикладу числа (51, 25, 15,256) не підходять бо містять символ "5"
