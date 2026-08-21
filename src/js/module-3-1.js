@@ -492,8 +492,34 @@ function averageArr_2(arr) {
   return arr2;
 }
 
-// 25. Напиши функцію, яка приймає массив чисел і повертає новий массив, де елементи
+// 25. Напиши функцію, яка приймає масив чисел і повертає новий масив, де елементи
 //    відсортовані в порядку збільшення або зменшення.
+function sortArray(direction, arr) {
+  const isNotArray = !Array.isArray(arr);
+  if (isNotArray) return "Введіть масив чисел";
+
+  const isValidNumber = (el) => typeof el === "number" && !Number.isNaN(el);
+  const hasInvalidElements = !arr.every(isValidNumber);
+
+  if (hasInvalidElements) {
+    return "Введіть масив чисел";
+  }
+
+  const sorted = [...arr];
+  // спадання
+  const isDesc = ["descending", "desc", "desc direction"].includes(direction);
+
+  return isDesc
+    ? // Метод .sort() бере по черзі дві пари елементів (a і b)
+      // і очікує від колбек - функції число: b - a > 0
+      // тоді b ставлять справа від а
+      sorted.sort((a, b) => b - a)
+    : sorted.sort((a, b) => a - b);
+}
+
+// Перевірка:
+console.log(sortArray("desc", [3, 1, 4, 2])); // [4, 3, 2, 1]
+
 // 26. Напиши функцію, яка приймає массив рядочків та сортує їх за довжиною
 //    елементів.
 
