@@ -520,8 +520,14 @@ function sortArray(direction, arr) {
 // Перевірка:
 console.log(sortArray("desc", [3, 1, 4, 2])); // [4, 3, 2, 1]
 
-// 26. Напиши функцію, яка приймає массив рядочків та сортує їх за довжиною
+// 26. Напиши функцію, яка приймає масив рядочків та сортує їх за довжиною
 //    елементів.
+function sortStrForLen(arr) {
+  if (arr.some((el) => typeof el !== "string"))
+    return "Масив має скаладатися із рядочків";
+  // Сортуємо від найкоротшого до найдовшого
+  return arr.sort((a, b) => a.length - b.length);
+}
 
 // ## Codewars
 
