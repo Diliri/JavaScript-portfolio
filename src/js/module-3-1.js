@@ -532,12 +532,26 @@ function sortStrForLen(arr) {
 // ## Codewars
 
 // - [Kata #1](https://www.codewars.com/kata/57a083a57cb1f31db7000028)
-// - [Kata #1](https://www.codewars.com/kata/64fbfe2618692c2018ebbddb)
-// - [Kata #1](https://www.codewars.com/kata/64fbfe2618692c2018ebbddb)
-// - [Kata #1](https://www.codewars.com/kata/57f222ce69e09c3630000212)
-// - [Kata #1](https://www.codewars.com/kata/53dc23c68a0c93699800041d)
+function powerOf2(power) {
+  if (!Number.isInteger(power) || power < 0)
+    return "степінь має бути цілим додатнім числом";
+  const resArr = [];
+  for (let i = 0; i <= power; i++) {
+    resArr.push(2 ** i);
+  }
+  return resArr;
+}
+// нижче варіант рішення від Gemini !!
+function powersOfTwo(n) {
+  return Array.from({ length: n + 1 }, (_, i) => 2 ** i);
+}
 
-// - [Kata #1](https://www.codewars.com/kata/57ea5b0b75ae11d1e800006c)
+// - [Kata #2](https://www.codewars.com/kata/64fbfe2618692c2018ebbddb)
+// - [Kata #3](https://www.codewars.com/kata/64fbfe2618692c2018ebbddb)
+// - [Kata #4](https://www.codewars.com/kata/57f222ce69e09c3630000212)
+// - [Kata #5](https://www.codewars.com/kata/53dc23c68a0c93699800041d)
+
+// - [Kata #6](https://www.codewars.com/kata/57ea5b0b75ae11d1e800006c)
 // - [Kata #2](https://www.codewars.com/kata/563cf89eb4747c5fb100001b)
 // - [Kata #3](https://www.codewars.com/kata/5813d19765d81c592200001a)
 // - [Kata #4](https://www.codewars.com/kata/62ad72443809a4006998218a)
