@@ -545,20 +545,34 @@ function powerOf2(power) {
 function powersOfTwo(n) {
   return Array.from({ length: n + 1 }, (_, i) => 2 ** i);
 }
+// n+1 , бо маємо ще врахувати нульову степінь
+// Перший параметр _ означає поточний елемент (він нам не потрібен, тому позначений підкресленням).
 
 // - [Kata #2](https://www.codewars.com/kata/64fbfe2618692c2018ebbddb)
-// - [Kata #3](https://www.codewars.com/kata/64fbfe2618692c2018ebbddb)
-// - [Kata #4](https://www.codewars.com/kata/57f222ce69e09c3630000212)
-// - [Kata #5](https://www.codewars.com/kata/53dc23c68a0c93699800041d)
+function flickSwitch() {
+  const arr = Array.from(arguments);
+  const result = [];
+  let flag = true;
 
-// - [Kata #6](https://www.codewars.com/kata/57ea5b0b75ae11d1e800006c)
-// - [Kata #2](https://www.codewars.com/kata/563cf89eb4747c5fb100001b)
-// - [Kata #3](https://www.codewars.com/kata/5813d19765d81c592200001a)
-// - [Kata #4](https://www.codewars.com/kata/62ad72443809a4006998218a)
-// - [Kata #5](https://www.codewars.com/kata/53b2ff49b82af296ce001139)
-// - [Kata #6](https://www.codewars.com/kata/58f8a3a27a5c28d92e000144)
-// - [Kata #7](https://www.codewars.com/kata/57a5b0dfcf1fa526bb000118)
-// - [Kata #8](https://www.codewars.com/kata/5a905c2157c562994900009d)
-// - [Kata #9](https://www.codewars.com/kata/57d814e4950d8489720008db)
-// - [Kata #10](https://www.codewars.com/kata/5a2be17aee1aaefe2a000151)
-// - [Kata #11](https://www.codewars.com/kata/57eba158e8ca2c8aba0002a0)
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === "flick") {
+      flag = !flag; // перемикаємо стан
+    }
+    result[i] = flag; // записуємо значення під відповідним індексом
+  }
+  return result;
+}
+// - [Kata #3](https://www.codewars.com/kata/57f222ce69e09c3630000212)
+// - [Kata #4](https://www.codewars.com/kata/53dc23c68a0c93699800041d)
+
+// - [Kata #5](https://www.codewars.com/kata/57ea5b0b75ae11d1e800006c)
+// - [Kata #6](https://www.codewars.com/kata/563cf89eb4747c5fb100001b)
+// - [Kata #7](https://www.codewars.com/kata/5813d19765d81c592200001a)
+// - [Kata #8](https://www.codewars.com/kata/62ad72443809a4006998218a)
+// - [Kata #9](https://www.codewars.com/kata/53b2ff49b82af296ce001139)
+// - [Kata #10](https://www.codewars.com/kata/58f8a3a27a5c28d92e000144)
+// - [Kata #11](https://www.codewars.com/kata/57a5b0dfcf1fa526bb000118)
+// - [Kata #12](https://www.codewars.com/kata/5a905c2157c562994900009d)
+// - [Kata #13](https://www.codewars.com/kata/57d814e4950d8489720008db)
+// - [Kata #14](https://www.codewars.com/kata/5a2be17aee1aaefe2a000151)
+// - [Kata #15](https://www.codewars.com/kata/57eba158e8ca2c8aba0002a0)
