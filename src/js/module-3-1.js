@@ -587,8 +587,28 @@ function well(x) {
   }
 }
 // - [Kata #4](https://www.codewars.com/kata/53dc23c68a0c93699800041d)
+// Write a function that takes an array of words and smashes
+// them together into a sentence and returns the sentence.
+// You can ignore any need to sanitize words or add punctuation,
+// but you should add spaces between each word.
+// Be careful, there shouldn't be a space at the beginning
+// or the end of the sentence!
+function intoSentence(arr) {
+  return arr.join(" ");
+}
 
 // - [Kata #5](https://www.codewars.com/kata/57ea5b0b75ae11d1e800006c)
+// Write a function that takes an array of strings as an argument and returns
+// a sorted array containing the same strings, ordered from shortest to longest.
+function sortByLength_1(arr) {
+  return [...arr].sort((a, b) => a.length - b.length);
+  // новий масив
+}
+function sortByLength_2(arr) {
+  return arr.sort((a, b) => a.length - b.length);
+  // сортуємо і змінюємо вхідний масив
+}
+
 // - [Kata #6](https://www.codewars.com/kata/563cf89eb4747c5fb100001b)
 // - [Kata #7](https://www.codewars.com/kata/5813d19765d81c592200001a)
 // - [Kata #8](https://www.codewars.com/kata/62ad72443809a4006998218a)
