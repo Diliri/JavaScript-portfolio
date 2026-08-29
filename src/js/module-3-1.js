@@ -639,6 +639,24 @@ function removeSmallest(numbers) {
 }
 
 // - [Kata #7](https://www.codewars.com/kata/5813d19765d81c592200001a)
+// Don't give me five!
+// In this kata you get the start number and the end number of a region
+// and should return the count of all numbers except numbers
+// with a 5 in it.The start and the end number are both inclusive!
+
+// Examples:
+
+// 1,9 -> 1,2,3,4,6,7,8,9 -> Result 8
+// 4, 17 -> 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17 -> Result 12
+function dontGive5(start, end) {
+  let count = 0;
+  for (let i = start; i <= end; i++) {
+    if (!String(i).includes("5")) {
+      count++;
+    }
+  }
+  return count;
+}
 // - [Kata #8](https://www.codewars.com/kata/62ad72443809a4006998218a)
 // - [Kata #9](https://www.codewars.com/kata/53b2ff49b82af296ce001139)
 // - [Kata #10](https://www.codewars.com/kata/58f8a3a27a5c28d92e000144)
