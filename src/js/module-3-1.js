@@ -658,6 +658,55 @@ function dontGive5(start, end) {
   return count;
 }
 // - [Kata #8](https://www.codewars.com/kata/62ad72443809a4006998218a)
+// Story
+// YouTube had a like and a dislike button, which allowed users to express
+// their opinions about particular content.
+// It was set up in such a way that you cannot like and dislike a video
+// at the same time.There are two other interesting rules to be noted
+// about the interface: Pressing a button, which is already active,
+// will undo your press.If you press the like button after pressing
+// the dislike button, the like button overwrites the previous "Dislike" state.
+// The same is true for the other way round.
+
+// Task
+// Create a function that takes in a list of button inputs and returns
+// the final state.
+
+// Examples
+// like_or_dislike([Dislike]) ➞ Dislike
+// like_or_dislike([Like, Like]) ➞ Nothing
+// like_or_dislike([Dislike, Like]) ➞ Like
+// like_or_dislike([Like, Dislike, Dislike]) ➞ Nothing
+// Notes
+// If no button is currently active, return Nothing.
+// If the list is empty, return Nothing.
+function youtubeBtn(buttons) {
+  let currentState = "Nothing";
+
+  for (let button of buttons) {
+    if (button === currentState) {
+      // Натискання на вже активну кнопку скасовує її
+      currentState = "Nothing";
+    } else {
+      // Натискання іншої кнопки перемикає стан на нову
+      currentState = button;
+    }
+  }
+
+  return currentState;
+}
+
+// Перевірка прикладів:
+console.log(youtubeBtn(["Dislike"])); // ➞ "Dislike"
+console.log(youtubeBtn(["Like", "Like"])); // ➞ "Nothing"
+console.log(youtubeBtn(["Dislike", "Like"])); // ➞ "Like"
+console.log(youtubeBtn(["Like", "Dislike", "Dislike"])); // ➞ "Nothing"
+console.log(youtubeBtn([])); // ➞ "Nothing"
+
+const likeOrDislike = (buttons) =>
+  buttons.reduce((state, btn) => (btn === state ? "Nothing" : btn), "Nothing");
+// reduce((accumulator, currentValue) => ..., initialValue)
+
 // - [Kata #9](https://www.codewars.com/kata/53b2ff49b82af296ce001139)
 // - [Kata #10](https://www.codewars.com/kata/58f8a3a27a5c28d92e000144)
 // - [Kata #11](https://www.codewars.com/kata/57a5b0dfcf1fa526bb000118)
