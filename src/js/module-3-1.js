@@ -708,6 +708,34 @@ const likeOrDislike = (buttons) =>
 // reduce((accumulator, currentValue) => ..., initialValue)
 
 // - [Kata #9](https://www.codewars.com/kata/53b2ff49b82af296ce001139)
+// The Array's reverse() method has gone missing! Re-write it, quick-sharp!
+
+// When this method is called, it reverses the order of the items in the original array. Then then it returns that same, original array. No new arrays should need to be created to pass this kata.
+
+// Here's an example:
+
+// var input = [1, 2, 3, 4];
+// input.reverse(); // == [4, 3, 2, 1]  // returned by .reverse()
+// input;           // == [4, 3, 2, 1]  // items reordered in the original array
+
+// рішення Gemini
+Array.prototype.reverse = function () {
+  for (let i = 0; i < Math.floor(this.length / 2); i++) {
+    let j = this.length - 1 - i;
+    [this[i], this[j]] = [this[j], this[i]];
+  }
+  return this;
+};
+
+// моє неправильне рішення (бо я створила новий масив)
+function myReverse(arr) {
+  const newArr = [];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    newArr.push(arr[i]);
+  }
+  return (arr = [...newArr]);
+}
+
 // - [Kata #10](https://www.codewars.com/kata/58f8a3a27a5c28d92e000144)
 // - [Kata #11](https://www.codewars.com/kata/57a5b0dfcf1fa526bb000118)
 // - [Kata #12](https://www.codewars.com/kata/5a905c2157c562994900009d)
