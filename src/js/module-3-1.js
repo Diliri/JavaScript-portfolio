@@ -755,6 +755,9 @@ function areAllConsecutive(arr) {
   }
 }
 // - [Kata #11](https://www.codewars.com/kata/57a5b0dfcf1fa526bb000118)
+function distinct(a) {
+  return [...new Set(a)];
+}
 // - [Kata #12](https://www.codewars.com/kata/5a905c2157c562994900009d)
 // - [Kata #13](https://www.codewars.com/kata/57d814e4950d8489720008db)
 // - [Kata #14](https://www.codewars.com/kata/5a2be17aee1aaefe2a000151)
