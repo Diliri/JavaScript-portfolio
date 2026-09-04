@@ -774,7 +774,47 @@ function distinct2(a) {
 }
 console.log(distinct([1, 1, 2])); // [1, 2]
 console.log(distinct([1, 2, 1, 1, 3, 2])); // [1, 2, 3]
+
 // - [Kata #12](https://www.codewars.com/kata/5a905c2157c562994900009d)
+// Task
+// Given an array/list [] of integers , Construct a product array Of same size Such That prod[i] is equal to The Product of all the elements of Arr[] except Arr[i].
+
+// Notes
+// Array/list size is at least 2 .
+
+// Array/list's numbers Will be only Positives
+
+// Repetition of numbers in the array/list could occur.
+// складність алгоритму O(n^2)
+function multiplesOfArr1(a) {
+  if (a.length < 2) return "array must contains at least 2 elements.";
+  const newA = [];
+
+  for (let i = 0; i < a.length; i++) {
+    let product = 1;
+    for (let j = 0; j < a.length; j++) {
+      if (i !== j) {
+        // Пропускаємо елемент з таким же індексом
+        product *= a[j];
+      }
+    }
+    newA.push(product);
+  }
+
+  return newA;
+}
+
+// складність O(n):
+function multiplesOfArr2(a) {
+  if (a.length < 2) return "array must contains at least 2 elements.";
+
+  // Знаходимо добуток усіх елементів
+  const totalProduct = a.reduce((acc, curr) => acc * curr, 1);
+
+  // Ділимо загальний добуток на кожен елемент
+  return a.map((num) => totalProduct / num);
+}
+
 // - [Kata #13](https://www.codewars.com/kata/57d814e4950d8489720008db)
 // - [Kata #14](https://www.codewars.com/kata/5a2be17aee1aaefe2a000151)
 // - [Kata #15](https://www.codewars.com/kata/57eba158e8ca2c8aba0002a0)
