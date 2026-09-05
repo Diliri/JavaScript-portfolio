@@ -815,6 +815,14 @@ function multiplesOfArr2(a) {
   return a.map((num) => totalProduct / num);
 }
 
-// - [Kata #13](https://www.codewars.com/kata/57d814e4950d8489720008db)
-// - [Kata #14](https://www.codewars.com/kata/5a2be17aee1aaefe2a000151)
-// - [Kata #15](https://www.codewars.com/kata/57eba158e8ca2c8aba0002a0)
+// - [Kata #13](https://www.codewars.com/kata/5a2be17aee1aaefe2a000151)
+// Array plus array
+// Description:
+// I'm new to coding and now I want to get the sum of two arrays... Actually the sum of all their elements. I'll appreciate for your help.
+
+// P.S. Each array includes only integer numbers. Output is a number too.
+function arrPlusArr(a1, a2) {
+  return [...a1, ...a2].reduce((acc, curr) => acc + curr, 0);
+}
+
+// - [Kata #14](https://www.codewars.com/kata/57eba158e8ca2c8aba0002a0)
