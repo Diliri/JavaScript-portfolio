@@ -532,6 +532,15 @@ function sortStrForLen(arr) {
 // ## Codewars
 
 // - [Kata #1](https://www.codewars.com/kata/57a083a57cb1f31db7000028)
+// Powers of 2
+
+// Description:
+// Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n ( inclusive ).
+
+// Examples
+// n = 0  ==> [1]        # [2^0]
+// n = 1  ==> [1, 2]     # [2^0, 2^1]
+// n = 2  ==> [1, 2, 4]  # [2^0, 2^1, 2^2]
 function powerOf2(power) {
   if (!Number.isInteger(power) || power < 0)
     return "степінь має бути цілим додатнім числом";
@@ -549,6 +558,24 @@ function powersOfTwo(n) {
 // Перший параметр _ означає поточний елемент (він нам не потрібен, тому позначений підкресленням).
 
 // - [Kata #2](https://www.codewars.com/kata/64fbfe2618692c2018ebbddb)
+// Flick Switch
+
+// Description:
+
+// Task
+// Create a function that always returns True/true for every item in a given list.
+// However, if an element is the word 'flick', switch to always returning the opposite boolean value.
+
+// Examples
+// ['codewars', 'flick', 'code', 'wars'] ➞ [True, False, False, False]
+
+// ['flick', 'chocolate', 'adventure', 'sunshine'] ➞ [False, False, False, False]
+
+// ['bicycle', 'jarmony', 'flick', 'sheep', 'flick'] ➞ [True, True, False, False, True]
+// Notes
+// "flick" will always be given in lowercase.
+// A list may contain multiple flicks.
+// Switch the boolean value on the same element as the flick itself.
 function flickSwitch() {
   const arr = Array.from(arguments);
   const result = [];
@@ -563,6 +590,8 @@ function flickSwitch() {
   return result;
 }
 // - [Kata #3](https://www.codewars.com/kata/57f222ce69e09c3630000212)
+// Well of Ideas - Easy Version
+// description:
 // For every good kata idea there seem to be quite a few bad ones!
 // In this kata you need to check the provided array (x) for good ideas 'good'
 // and bad ideas 'bad'.If there are one or two good ideas, return 'Publish!',
@@ -588,6 +617,8 @@ function well(x) {
 }
 
 // - [Kata #4](https://www.codewars.com/kata/53dc23c68a0c93699800041d)
+// Description:
+// Sentence Smash
 // Write a function that takes an array of words and smashes
 // them together into a sentence and returns the sentence.
 // You can ignore any need to sanitize words or add punctuation,
@@ -658,6 +689,9 @@ function dontGive5(start, end) {
   return count;
 }
 // - [Kata #8](https://www.codewars.com/kata/62ad72443809a4006998218a)
+// Likes Vs Dislikes
+// description:
+
 // Story
 // YouTube had a like and a dislike button, which allowed users to express
 // their opinions about particular content.
@@ -708,6 +742,8 @@ const likeOrDislike = (buttons) =>
 // reduce((accumulator, currentValue) => ..., initialValue)
 
 // - [Kata #9](https://www.codewars.com/kata/53b2ff49b82af296ce001139)
+// Array.prototype.reverse();
+// Description:
 // The Array's reverse() method has gone missing! Re-write it, quick-sharp!
 
 // When this method is called, it reverses the order of the items in the original array. Then then it returns that same, original array. No new arrays should need to be created to pass this kata.
@@ -719,7 +755,7 @@ const likeOrDislike = (buttons) =>
 // input;           // == [4, 3, 2, 1]  // items reordered in the original array
 
 // рішення Gemini
-Array.prototype.reverse = function () {
+Description: Array.prototype.reverse = function () {
   for (let i = 0; i < Math.floor(this.length / 2); i++) {
     let j = this.length - 1 - i;
     [this[i], this[j]] = [this[j], this[i]];
@@ -737,6 +773,9 @@ function myReverse(arr) {
 }
 
 // - [Kata #10](https://www.codewars.com/kata/58f8a3a27a5c28d92e000144)
+// Find the first non-consecutive number
+
+// Description:
 // Your task is to find the first element of an array that is not consecutive.
 
 // By not consecutive we mean not exactly 1 larger than the previous element of the array.
@@ -755,7 +794,8 @@ function areAllConsecutive(arr) {
   }
 }
 // - [Kata #11](https://www.codewars.com/kata/57a5b0dfcf1fa526bb000118)
-
+// Remove duplicates from list
+// Description:
 // Define a function that removes duplicates from an array of non negative numbers and returns it as a result.
 
 // The order of the sequence has to stay the same.
@@ -776,6 +816,12 @@ console.log(distinct([1, 1, 2])); // [1, 2]
 console.log(distinct([1, 2, 1, 1, 3, 2])); // [1, 2, 3]
 
 // - [Kata #12](https://www.codewars.com/kata/5a905c2157c562994900009d)
+// Product Array (Array Series #5)
+
+// Description:
+// Introduction and Warm-up (Highly recommended)
+// Playing With Lists/Arrays Series
+
 // Task
 // Given an array/list [] of integers , Construct a product array Of same size Such That prod[i] is equal to The Product of all the elements of Arr[] except Arr[i].
 
@@ -826,3 +872,26 @@ function arrPlusArr(a1, a2) {
 }
 
 // - [Kata #14](https://www.codewars.com/kata/57eba158e8ca2c8aba0002a0)
+// Sort by Last Char
+
+// Description:
+// Given a string of words (x), you need to return an array of the words, sorted alphabetically by the final character in each.
+
+// If two words have the same last letter, the returned array should show them in the order they appeared in the given string.
+
+// All inputs will be valid.
+function sortByLastChar(x) {
+  return x.split(" ").sort((a, b) => a.at(-1).localeCompare(b.at(-1)));
+}
+// Як працює localeCompare()
+// Метод localeCompare() порівнює два рядки відповідно до правил конкретної мови (локалі) і повертає число, яке показує, яке слово має йти раніше в алфавітному порядку.
+
+// Що повертає метод:
+// від'ємне число (зазвичай -1) — якщо перший рядок має йти раніше за другий.
+
+// 0 — якщо обидва рядки рівні.
+
+// додатне число (зазвичай 1) — якщо перший рядок має йти пізніше за другий.
+
+// Чому це краще за звичайні оператори порівняння (< або >):
+// Звичайні оператори порівнюють символи за їхніми кодами Unicode (UTF-16 code units), що часто дає неправильні результати для алфавітного сортування (наприклад, великі літери завжди йдуть раніше за малі, а літери з діакритичними знаками типу ä, é чи є потрапляють у кінець).
