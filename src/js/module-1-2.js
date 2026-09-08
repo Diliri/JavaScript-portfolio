@@ -364,6 +364,10 @@ console.log(value);
 // ## CodeWars
 
 // 1. [Kata](https://www.codewars.com/kata/55fab1ffda3e2e44f00000c6)
+
+// Beginner Series #4 Cockroach
+// Description:
+// The cockroach is one of the fastest insects.
 // Write a function which takes its speed in km per hour
 // and returns it in cm per second, rounded down to the integer(= floored).
 function cockroachSpeed(velocity) {
@@ -371,6 +375,13 @@ function cockroachSpeed(velocity) {
   return Math.floor((velocity * 100000) / 3600);
 }
 // 2. [Kata](https://www.codewars.com/kata/5748838ce2fab90b86001b1a)
+// Area of a Square
+
+// Description:
+// Complete the function that calculates the area of the red square, when the length of the circular arc A is given as the input.
+
+// Note: use the π value provided in your language (Math::PI, M_PI, math.pi, etc)
+
 // Завдання: Площа квадрата
 // Напиши функцію, яка обчислює площу квадрата за заданою довжиною дуги кола A.
 // Дуга A становить чверть($1 / 4$) від повної довжини кола,
@@ -383,12 +394,26 @@ function squareArea(A) {
 }
 // 3. [Kata](https://www.codewars.com/kata/55f9bca8ecaa9eac7100004a)
 // to write a function which returns the time in milliseconds
+// Beginner Series #2 Clock
+
+// Description:
+// Clock shows h hours, m minutes and s seconds after midnight.
+
+// Your task is to write a function which returns the time since midnight in milliseconds.
+
+// Example:
+// h = 0
+// m = 1
+// s = 1
+
+// result = 61000
 function timeInMilliseconds(hours, minutes, seconds) {
   let time = 0;
   time += (hours * 60 * 60 + minutes * 60 + seconds) * 1000;
   return time;
 }
 // 4. [Kata](https://www.codewars.com/kata/55a5befdf16499bffb00007b/train/javascript)
+// Fundamentals: Return
 function add(a, b) {
   return a + b;
 }
@@ -415,6 +440,16 @@ function exponent(a, b) {
 // 5. [Kata](https://www.codewars.com/kata/5bb0c58f484fcd170700063d)
 // Задача про відстань між стовпами (pillars),
 // не враховуючи саму ширину першого і останнього стовпів
+
+// Pillars
+
+// Description:
+// There are pillars near the road. The distance between the pillars is the same and the width of the pillars is the same. Your function accepts three arguments:
+
+// number of pillars (≥ 1);
+// distance between pillars (10 - 30 meters);
+// width of the pillar (10 - 50 centimeters).
+// Calculate the distance between the first and the last pillar in centimeters (without the width of the first and last pillar).
 
 function pillars(numPill, dist, widthPill) {
   // Якщо стовп 1 або менше, відстань 0
