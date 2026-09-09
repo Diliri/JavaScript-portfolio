@@ -927,6 +927,21 @@ function isContinent(continent) {
 // ## Codewars
 
 // 1. [Kata](https://www.codewars.com/kata/5672a98bdbdd995fad00000f)
+// Rock Paper Scissors!
+// Description:
+// Rules of the "Rock, Paper, Scissors" game are:
+
+// Rock beats Scissors,
+// Scissors beat Paper,
+// Paper beats Rock,
+// Two identical moves are a draw.
+// Let's play! You will be given valid moves of two Rock, Paper, Scissors players, and have to return which player won: "Player 1 won!" for player 1, and "Player 2 won!" for player 2. In case of a draw return Draw!.
+
+// Examples:
+// "scissors",     "paper"     --> "Player 1 won!"
+// "scissors",     "rock"      --> "Player 2 won!"
+// "paper",        "paper"     --> "Draw!"
+
 // камінь-ножиці-папір
 // 1. Масив можливих ходів
 const moves = ["rock", "paper", "scissors"];
@@ -963,8 +978,30 @@ console.log(`Result: ${rps(player1Move, player2Move)}`);
 function century(year) {
   return Math.ceil(year / 100);
 }
+// Century From Year
+// Description:
+// Introduction
+// The first century spans from the year 1 up to and including the year 100, the second century - from the year 101 up to and including the year 200, etc.
+
+// Task
+// Given a year, return the century it is in.
+
+// Examples
+// 1705 --> 18
+// 1900 --> 19
+// 1601 --> 17
+// 2000 --> 20
+// 2742 --> 28
 // 1. [Kata](https://www.codewars.com/kata/55f9b48403f6b87a7c0000bd/train/javascript)
 function paperwork(n, m) {
   if (n < 0 || m < 0) return 0;
   return n * m;
 }
+// Beginner Series #1 School Paperwork
+// Your classmates asked you to copy some paperwork for them. You know that there are 'n' classmates and the paperwork has 'm' pages.
+
+// Your task is to calculate how many blank pages do you need. If n < 0 or m < 0 return 0.
+
+// Example:
+// n= 5, m=5: 25
+// n=-5, m=5:  0
