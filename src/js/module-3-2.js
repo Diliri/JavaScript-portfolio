@@ -40,13 +40,58 @@ function isEven(number) {
 // 8. Напиши функцію яка приймає рядок і повертає цей самий рядок але огорнутий у
 //    тег div. Приклад: на вході був рядок `"Hello world"` а на виході рядок
 //    `"<div>Hello world</div>"`
+function intoDiv(str) {
+  return "<div>" + str + "</div>";
+  // return `<div>${str}</div>`;
+}
 
 // 9. Напиши функцію, яка приймає рядок і повертає кількість слів у ньому (слова
 //    розділені пробілами).
+function countWords(str) {
+  return str.split(" ").length;
+}
+// Нюанс: Якщо у рядку буде кілька пробілів підряд або пробіли на початку/наприкінці,
+// .split(' ') порахує порожні елементи як слова.
+// Також для порожнього рядка "".split(' ') поверне[""](масив з 1 елементом),
+// тобто результат буде 1 замість 0. Як покращити:
+function countWords_2(str) {
+  let trimmed = str.trim();
+  if (trimmed === "") return 0;
+  return trimmed.split(/\s+/).length; // \s+ враховує один або кілька пробілів
+}
 // 10. Напиши функцію, яка приймає рядок і повертає його довжину помножену на
 //    кількість слів в цьому рядку.
+function multiplyLengthByWordsCount(str) {
+  return str.length * str.split(" ").length;
+}
 // 11. Напиши функцію, яка приймає рядок і повертає кількість голосних літер у ньому
 //    (a, e, i, o, u). Використовуйте метод includes та цикл.
+function countVowels(str) {
+  let counter = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i].toLowerCase().includes("a", "e", "i", "o", "u")) {
+      counter += 1;
+    }
+  }
+  return counter;
+}
+//Зверху була помилка:
+
+// Метод includes приймає лише один пошуковий рядок у першому аргументі("a").
+// Решта аргументів("e", "i"...) ігноруються або сприймаються як позиція пошуку.
+
+function countVowels_2(str) {
+  let counter = 0;
+  let vowels = "aeiou";
+  for (let i = 0; i < str.length; i++) {
+    // Перевіряємо, чи є поточна літера серед "aeiou"
+    if (vowels.includes(str[i].toLowerCase())) {
+      counter += 1;
+    }
+  }
+  return counter;
+}
+
 // 12. Напиши функцію, яка приймає рядок і повертає новий рядок, де слова
 //    розташовані у зворотному порядку.
 // 13. Напиши функцію, яка приймає довільну кількість аргументів і повертає true,
