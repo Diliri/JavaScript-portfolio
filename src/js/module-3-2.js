@@ -94,8 +94,32 @@ function countVowels_2(str) {
 
 // 12. Напиши функцію, яка приймає рядок і повертає новий рядок, де слова
 //    розташовані у зворотному порядку.
+function intoReverseOrder(str) {
+  const arrOfStr = str.split(" ");
+  const newArr = [];
+  for (let i = arrOfStr.length - 1; i >= 0; i--) {
+    newArr.push(arrOfStr[i]);
+  }
+  return newArr.join(" ");
+}
+
+//str.split(" ").reverse().join(" ")
+
 // 13. Напиши функцію, яка приймає довільну кількість аргументів і повертає true,
 //    якщо всі аргументи є числами, і false, якщо ні.
+function isAllNum(...args) {
+  for (let el of args) {
+    if (typeof el !== "number") {
+      return false;
+    }
+  }
+  return true;
+}
+
+function isAllNum_2(...args) {
+  return args.every((arg) => typeof arg === "number");
+}
+
 // 14. Напиши функцію, яка приймає довільну кількість аргументів і повертає їх
 //    об'єднаними в один рядок, розділений комами.
 // 15. Напиши функцію, яка приймає довільну кількість чисел і повертає їхній
