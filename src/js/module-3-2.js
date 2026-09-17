@@ -142,6 +142,17 @@ function countOdd(...args) {
 }
 // 17. Напиши функцію яка приймає довільну кількість рядочків і повертає той рядок
 //    що є найдовшим
+function identifyTheLongest(...args) {
+  let maxLen = 0;
+  let longestString = "";
+  for (let el of args) {
+    if (el.length > maxLen) {
+      maxLen = el.length;
+      longestString = el;
+    }
+  }
+  return longestString;
+}
 // 18. Напиши функцію яка приймає довільну кількість рядочків і обєднує їх в один
 //    цілий рядок.
 function intoOneBigStr(...args) {
