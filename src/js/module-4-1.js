@@ -2,12 +2,12 @@
 
 // ## ОСНОВИ
 
-// Створення об'єкта: Створіть об'єкт person, який містить властивості 
+// Створення об'єкта: Створіть об'єкт person, який містить властивості
 // ім'я, вік та професія.
 const person = {
-    name: 'Diana',
-    age: 28,
-    profession: "teacher"
+  name: "Diana",
+  age: 28,
+  profession: "teacher",
 };
 // Доступ до властивостей: Виведіть на консоль ім'я створеного об'єкта person.
 console.log(person.name);
@@ -17,7 +17,7 @@ person.age = 29;
 // зі значенням.
 person.work = "school";
 // Видалення властивостей: Видаліть властивість професія з об'єкта person.
-delete person.profession; 
+delete person.profession;
 // Пошук властивостей: Перевірте, чи існує властивість професія в об'єкті person.
 console.log(person.profession); // undefined
 
@@ -33,11 +33,16 @@ Object.assign(person, friend); // Тепер властивості friend ск�
 // Перебір властивостей: Виведіть всі властивості об'єкта person на консоль у
 // вигляді ключ-значення.
 for (let key in person) {
-    console.log(key, person[key]);
+  console.log(key, person[key]);
 }
 // Методи об'єкта: Додайте до об'єкта person метод привітання, який буде виводити
 // вітання з іменем особи.
-person.greeting() = console.log(`Hello, {$person.name}!`); 
+person.greeting = function () {
+  console.log(`Hello, ${person.name}!`);
+}; // створення методу
+
+person.greeting(); // виклик методу
+
 // Застосування Object.keys(): Виведіть на консоль масив зі всіма ключами об'єкта
 // person за допомогою функції Object.keys().
 console.log(Object.keys(person));
@@ -52,39 +57,58 @@ console.log(Object.keys(person));
 // ```
 
 // ---
-
+function createObjNameAge(name, age) {
+  return {
+    name,
+    age,
+  };
+}
 // ```
 // Напиши функцію, яка приймає об'єкт і додає до нього нову властивість "address" (рядок).
 // Поверни оновлений об'єкт.
 // ```
 
 // ---
-
+function addAddress(obj, address) {
+  obj.address = address;
+  return obj;
+}
 // ```
 // Напиши функцію, яка приймає об'єкт і новий вік.
 // Функція повинна змінити значення властивості "age" в об'єкті на нове значення.
 // Поверни оновлений об'єкт.
 // ```
-
+function updateAge(obj, age) {
+  obj.age = age;
+  return obj;
+}
 // ---
 
 // ```
 // Напиши функцію, яка приймає об'єкт і видаляє з нього властивість "age".
 // Поверни оновлений об'єкт.
 // ```
-
+function deleteAge(obj) {
+  delete obj.age;
+  return obj;
+}
 // ---
 
 // ```
 // Напиши функцію, яка приймає об'єкт і повертає значення властивості "name".
 // ```
-
+function returnName(obj) {
+  return obj.name;
+}
 // ---
 
 // ```
-// Напиши функцію, яка приймає об'єкт і повертає true, якщо властивість "address" існує в об'єкті, і false, якщо ні.
+// Напиши функцію, яка приймає об'єкт і повертає true, якщо властивість
+// "address" існує в об'єкті, і false, якщо ні.
 // ```
-
+function isPropertyIn(obj) {
+  return "address" in obj;
+}
 // ---
 
 // ```
@@ -92,7 +116,11 @@ console.log(Object.keys(person));
 // Якщо у об'єктів є однакові властивості, значення другого об'єкта мають замінити значення першого.
 // Поверни результат.
 // ```
-
+function concateObj(obj1, obj2) {
+  return Object.assign({}, obj1, obj2);
+  // або інший варіант виконання:
+  // return { ...obj1, ...obj2 };
+}
 // ---
 
 // ```
@@ -104,7 +132,8 @@ console.log(Object.keys(person));
 // ---
 
 // ```
-// Напиши функцію, яка приймає об'єкт та нові значення для імені та віку. Функція повинна змінити обидві властивості в об'єкті. Поверни оновлений об'єкт.
+// Напиши функцію, яка приймає об'єкт та нові значення для імені та віку.
+// Функція повинна змінити обидві властивості в об'єкті. Поверни оновлений об'єкт.
 // ```
 
 // ---
