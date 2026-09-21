@@ -290,13 +290,112 @@ console.log(rect2.perimeter()); // 30
 // для додавання нових завдань, позначки задачі як виконаної та виведення списку
 // завдань.
 // ```
+const toDoList = {
+  // Масив для збереження завдань
+  tasks: [],
+
+  // Метод додавання нового завдання
+  addNewToDo(taskText) {
+    this.tasks.push({
+      text: taskText,
+      isDone: false,
+    });
+  },
+
+  // Метод позначення завдання як виконаного
+  doneToDo(taskText) {
+    const task = this.tasks.find((item) => item.text === taskText);
+
+    if (task) {
+      task.isDone = true;
+    } else {
+      console.log(`Завдання "${taskText}" не знайдено.`);
+    }
+  },
+
+  // Метод виведення списку завдань
+  printTheList() {
+    console.log("--- Список завдань ---");
+
+    if (this.tasks.length === 0) {
+      console.log("Список порожній.");
+      return;
+    }
+
+    this.tasks.forEach((item, index) => {
+      const status = item.isDone ? "[✓]" : "[ ]";
+      console.log(`${index + 1}. ${status} ${item.text}`);
+    });
+  },
+};
+
+// Приклад використання:
+
+// 1. Додаємо завдання
+toDoList.addNewToDo("Перевірити зошити");
+toDoList.addNewToDo("Помити посуд");
+toDoList.addNewToDo("Помити підлогу");
+
+// 2. Позначаємо завдання як виконане
+toDoList.doneToDo("Перевірити зошити");
+
+// 3. Виводимо список
+toDoList.printTheList();
+
+/*
+Результат у консолі:
+--- Список завдань ---
+1. [✓] Перевірити зошити
+2. [ ] Помити посуд
+3. [ ] Помити підлогу
+*/
 
 // ```
 // Створіть об'єкт bankAccount, який представлятиме банківський рахунок із методами
 // для депозиту, зняття коштів та перевірки балансу.
 // Врахуйте обробку можливих помилок(наприклад, недостатньо коштів).
 // ```
+const bankAccount = {
+  balance: 0,
 
+  deposit(amount) {
+    if (typeof amount !== "number" || amount <= 0) {
+      console.log("Сума депозиту має бути додатним числом.");
+      return;
+    }
+    this.balance += amount;
+    console.log(
+      `Успішно поповнено на ${amount}$. Поточний баланс: ${this.balance}$.`
+    );
+  },
+
+  withdraw(amount) {
+    if (typeof amount !== "number" || amount <= 0) {
+      console.log("Сума для зняття має бути додатним числом.");
+      return;
+    }
+    if (amount > this.balance) {
+      console.log(
+        `Недостатньо коштів на рахунку! Поточний баланс: ${this.balance}$.`
+      );
+      return;
+    }
+    this.balance -= amount;
+    console.log(
+      `Успішно знято ${amount}$. Залишок на рахунку: ${this.balance}$.`
+    );
+  },
+
+  printAccount() {
+    console.log(`Ваш поточний баланс: ${this.balance}$.`);
+  },
+};
+
+// Приклад використання:
+bankAccount.printAccount(); // Ваш поточний баланс: 0$.
+bankAccount.deposit(100); // Успішно поповнено на 100$. Поточний баланс: 100$.
+bankAccount.withdraw(30); // Успішно знято 30$. Залишок на рахунку: 70$.
+bankAccount.withdraw(100); // Недостатньо коштів на рахунку! Поточний баланс: 70$.
 // ```
 // Створіть об'єкт libraryCatalog, який зберігатиме список книг у бібліотеці
 // та надаватиме методи для додавання нових книг, пошуку книг за автором та ISBN,
