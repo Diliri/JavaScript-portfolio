@@ -401,7 +401,88 @@ bankAccount.withdraw(100); // Недостатньо коштів на раху�
 // та надаватиме методи для додавання нових книг, пошуку книг за автором та ISBN,
 // а також виведення списку всіх книг.
 // ```
+const libraryCatalog = {
+  books: [],
 
+  // Додавання книги (очікує об'єкт з полями name, author, ISBN)
+  add(book) {
+    if (!book || !book.name || !book.author || !book.ISBN) {
+      console.log(
+        "Помилка: Книга повинна мати назву (name), автора (author) та ISBN."
+      );
+      return;
+    }
+
+    // Перевірка на унікальність ISBN
+    const isDuplicate = this.books.some((b) => b.ISBN === book.ISBN);
+    if (isDuplicate) {
+      console.log(`Книга з ISBN ${book.ISBN} вже є у каталозі.`);
+      return;
+    }
+
+    this.books.push(book);
+    console.log(`Книгу "${book.name}" успішно додано.`);
+  },
+
+  // Пошук за автором або ISBN
+  find({ author, ISBN }) {
+    const results = this.books.filter((book) => {
+      if (ISBN) return book.ISBN === ISBN;
+      if (author)
+        return book.author.toLowerCase().includes(author.toLowerCase());
+      return false;
+    });
+
+    if (results.length === 0) {
+      console.log("Книг за вашим запитом не знайдено.");
+      return [];
+    }
+
+    console.log(`Знайдено книг: ${results.length}`);
+    return results;
+  },
+
+  // Виведення списку всіх книг
+  print() {
+    if (this.books.length === 0) {
+      console.log("Каталог бібліотеки порожній.");
+      return;
+    }
+
+    console.log("--- Список книг у бібліотеці ---");
+    this.books.forEach((book, index) => {
+      console.log(
+        `${index + 1}. "${book.name}" — ${book.author} (ISBN: ${book.ISBN})`
+      );
+    });
+  },
+};
+
+// Приклад використання:
+
+// 1. Додавання книг
+libraryCatalog.add({
+  name: "Грокаємо алгоритми",
+  author: "Адітья Бхаргава",
+  ISBN: "978-1617292231",
+});
+libraryCatalog.add({
+  name: "Замок Хаула",
+  author: "Діана Вінн Джонс",
+  ISBN: "978-0064410120",
+});
+
+// 2. Пошук книги за ISBN
+console.log("\n--- Пошук за ISBN ---");
+libraryCatalog.find({ ISBN: "978-1617292231" });
+
+// 3. Пошук книги за автором
+console.log("\n--- Пошук за автором ---");
+libraryCatalog.find({ author: "Джонс" });
+
+// 4. Виведення всіх книг
+console.log("\n--- Виведення каталогу ---");
+libraryCatalog.print();
 // ```
 // Створіть об'єкт temperatureConverter, який матиме методи для конвертації
 // температур між градусами Цельсія та Фаренгейта.
