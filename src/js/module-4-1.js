@@ -483,11 +483,25 @@ libraryCatalog.find({ author: "Джонс" });
 // 4. Виведення всіх книг
 console.log("\n--- Виведення каталогу ---");
 libraryCatalog.print();
+
 // ```
 // Створіть об'єкт temperatureConverter, який матиме методи для конвертації
 // температур між градусами Цельсія та Фаренгейта.
 // ```
+const temperatureConverter = {
+  temperature: 0,
 
+  toCelsius(fahrenheit) {
+    // Округлення до 1 знака після коми:
+    this.temperature = Number(((fahrenheit - 32) / 1.8).toFixed(1));
+    return this.temperature;
+  },
+
+  toFahrenheit(celsius) {
+    this.temperature = Number((celsius * 1.8 + 32).toFixed(1));
+    return this.temperature;
+  },
+};
 // ```
 // Створіть об'єкт shoppingCart, який зберігатиме список товарів та надаватиме
 // методи для додавання товарів, підрахунку загальної вартості та виведення
