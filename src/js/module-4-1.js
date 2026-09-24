@@ -502,11 +502,44 @@ const temperatureConverter = {
     return this.temperature;
   },
 };
+
 // ```
 // Створіть об'єкт shoppingCart, який зберігатиме список товарів та надаватиме
 // методи для додавання товарів, підрахунку загальної вартості та виведення
 // списку товарів.
 // ```
+const shoppingCart = {
+  cart: [],
+
+  addItem(item, price) {
+    this.cart.push({
+      item: item,
+      price: price,
+    });
+  },
+
+  allPrice() {
+    let sum = 0;
+
+    for (let product of this.cart) {
+      sum += product.price;
+    }
+
+    return sum;
+  },
+
+  printCart() {
+    console.log(this.cart);
+  },
+};
+
+shoppingCart.addItem("Яблука", 50);
+shoppingCart.addItem("Хліб", 30);
+shoppingCart.addItem("Молоко", 40);
+
+shoppingCart.printCart();
+
+console.log(shoppingCart.allPrice());
 
 // ```
 // Створіть об'єкт socialNetworkUser, який представляє користувача соціальної мережі
