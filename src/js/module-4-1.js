@@ -546,12 +546,79 @@ console.log(shoppingCart.allPrice());
 // з полями username, friends(список друзів) та методами для додавання та видалення
 // друзів, а також виведення списку друзів.
 // ```
+const socialNetworkUser = {
+  username: "Diana",
+  friends: [],
+
+  addNewFriend(friend) {
+    this.friends.push(friend);
+  },
+
+  deleteFriend(friend) {
+    const index = this.friends.indexOf(friend);
+    // splice(index, 1) видаляє один елемент із цієї позиції.
+    if (index !== -1) {
+      this.friends.splice(index, 1);
+    }
+  },
+
+  printAllFriends() {
+    console.log(this.friends);
+  },
+};
+
+socialNetworkUser.addNewFriend("Anna");
+socialNetworkUser.addNewFriend("Maria");
+socialNetworkUser.addNewFriend("Olena");
+
+socialNetworkUser.printAllFriends();
+// ["Anna", "Maria", "Olena"]
+
+socialNetworkUser.deleteFriend("Maria");
+
+socialNetworkUser.printAllFriends();
+// ["Anna", "Olena"]
 
 // ```
 // Створіть об'єкт musicPlayer, який зберігатиме список пісень та надаватиме методи
 // для додавання нових пісень, відтворення, паузи та перемикання між піснями.
 // ```
+const musicPlayer = {
+  songs: [],
+  currentSong: 0,
+  isPlaying: false,
 
+  addSong(song) {
+    // додати пісню
+    return this.songs.push(song);
+  },
+
+  // А поточна пісня вже визначається через: this.currentSong
+  play() {
+    // відтворити поточну пісню
+    this.isPlaying = true;
+  },
+
+  pause() {
+    // поставити на паузу
+    this.isPlaying = false;
+  },
+
+  nextSong() {
+    // перейти до наступної пісні
+    // треба врахувати кількість пісень!!!
+    if (this.currentSong < this.songs.length - 1) {
+      this.currentSong += 1;
+    }
+  },
+
+  previousSong() {
+    // перейти до попередньої пісні
+    if (this.currentSong > 0) {
+      this.currentSong -= 1;
+    }
+  },
+};
 // ```
 // Створіть об'єкт myString, який буде мати наступні методи: метод reverse(),
 // який параметром приймає рядок, а повертає його в перевернутому вигляді;
