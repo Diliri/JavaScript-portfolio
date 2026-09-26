@@ -626,7 +626,23 @@ const musicPlayer = {
 // зробивши його першу літеру заголовною; і метод ucWords(), який приймає рядок
 // і робить заголовною першу літеру кожного слова цього рядка.
 // ```
+const myString = {
+  // оскільки .reverse() — це метод масиву, то
+  reverse(string) {
+    return string.split("").reverse().join("");
+  },
+  ucFirst(string) {
+    // не забувай про конкатенацію !!!
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  },
+  ucWords(string) {
+    string = string.split(" ");
 
+    string = string.map((word) => word.charAt(0).toUpperCase() + word.slice(1));
+
+    return string.join(" ");
+  },
+};
 // ```
 // Створіть об'єкт validator, який перевірятиме рядки. Наприклад, у нього буде метод
 // isEmail, що параметром приймає рядок і перевіряє, чи є він коректним емейлом
