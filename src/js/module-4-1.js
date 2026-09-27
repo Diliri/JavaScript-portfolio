@@ -650,7 +650,51 @@ const myString = {
 // такі методи: метод isDomain для перевірки домену, метод isDate для перевірки
 // дати і метод isPhone для перевірки телефону.
 // ```
+const validator = {
+  // Перевірка емейлу (стандартний формат: name@domain.com)
+  isEmail(str) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(str);
+  },
 
+  // Перевірка домену (наприклад, example.com або sub.domain.org)
+  isDomain(str) {
+    const domainRegex =
+      /^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
+    return domainRegex.test(str);
+  },
+
+  // Перевірка дати у форматі ДД.ММ.РРРР або ДД-ММ-РРРР
+  isDate(str) {
+    const dateRegex =
+      /^(0[1-9]|[12][0-9]|3[01])[.-](0[1-9]|1[012])[.-](19|20)\d\d$/;
+    return dateRegex.test(str);
+  },
+
+  // Перевірка телефону (підтримує формати: +380XXXXXXXXX, 0XXXXXXXXX або +12345678901)
+  isPhone(str) {
+    const phoneRegex = /^\+?\d{10,14}$/;
+    return phoneRegex.test(str);
+  },
+};
+
+// Приклади використання:
+
+console.log("--- Email ---");
+console.log(validator.isEmail("user@gmail.com")); // true
+console.log(validator.isEmail("invalid-email")); // false
+
+console.log("--- Domain ---");
+console.log(validator.isDomain("google.com")); // true
+console.log(validator.isDomain("not_a_domain")); // false
+
+console.log("--- Date ---");
+console.log(validator.isDate("25.12.2023")); // true
+console.log(validator.isDate("2023/12/25")); // false
+
+console.log("--- Phone ---");
+console.log(validator.isPhone("+380971234567")); // true
+console.log(validator.isPhone("12345")); // false
 // ---
 
 // ## РОЗПИСАНІ ЗАДАЧІ
