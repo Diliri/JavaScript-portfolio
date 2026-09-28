@@ -735,7 +735,31 @@ const contactBook3 = {
 // - **Методи**:
 //   - `area()` - метод, що обчислює та повертає площу прямокутника.
 //   - `perimeter()` - метод, що обчислює та повертає периметр прямокутника.
+const rectangle = {
+  width: 0,
+  height: 0,
 
+  setDimensions(width, height) {
+    this.width = width;
+    this.height = height;
+  },
+
+  area() {
+    return this.width * this.height;
+  },
+
+  perimeter() {
+    return 2 * (this.width + this.height);
+  },
+};
+
+// Отримуємо дані від користувача та оновлюємо об'єкт:
+const w = Number(prompt("Введіть ширину:"));
+const h = Number(prompt("Введіть висоту:"));
+
+rectangle.setDimensions(w, h);
+
+console.log("Площа:", rectangle.area());
 // ---
 
 // Створити об'єкт **toDoList**:
