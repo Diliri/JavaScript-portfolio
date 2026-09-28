@@ -710,7 +710,21 @@ console.log(validator.isPhone("12345")); // false
 //     його з масиву контактів.
 //   - `findContact(contactName)` - метод, що приймає ім'я контакта та шукає його у
 //     масиві контактів.
+const contactBook3 = {
+  contacts: [],
 
+  addContact(contact) {
+    this.contacts.push(contact);
+  },
+
+  deleteContact(contactName) {
+    this.contacts = this.contacts.filter((c) => c.name !== contactName);
+  },
+
+  findContact(contactName) {
+    return this.contacts.find((c) => c.name === contactName);
+  },
+};
 // ---
 
 // Створити об'єкт **rectangle**:
