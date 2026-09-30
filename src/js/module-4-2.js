@@ -84,7 +84,19 @@ const worker = {
 // Створи об'єкт із властивостями `countryName` (рядок), `capital` (рядок) та
 // `population` (число). Додай метод `getDetails`, який повертає рядок у форматі:
 // `Країна: [countryName], столиця: [capital], населення: [population]`.
-
+const countryInfo = {
+  countryName: "",
+  capital: "",
+  population: 0,
+  setInfo(countryName, capital, population) {
+    this.countryName = countryName;
+    this.capital = capital;
+    this.population = population;
+  },
+  getDetails() {
+    return `Країна: ${this.countryName}, столиця: ${this.capital}, населення: ${this.population}`;
+  },
+};
 // ---
 
 // **6. Завдання:**
