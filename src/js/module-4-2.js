@@ -32,6 +32,23 @@ const user = {
 // `balance` (число). Додай метод `deposit`, який приймає суму як аргумент і додає
 // її до балансу, а також метод `withdraw`, який приймає суму і зменшує баланс,
 // якщо сума не перевищує наявний баланс. Метод має повертати новий баланс.
+const bankAccount = {
+    bankName: "PrivatBank",
+    accountNumber: 4149497812345678,
+    balance: 1000,
+
+    deposit(amount) {
+        this.balance += amount;
+        return this.balance;
+    },
+
+    withdraw(amount) {
+        if (amount <= this.balance) {
+            this.balance -= amount;
+        }
+        return this.balance;
+    }
+};
 
 // ---
 
