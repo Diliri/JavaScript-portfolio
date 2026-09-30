@@ -32,6 +32,23 @@ const user = {
 // `balance` (число). Додай метод `deposit`, який приймає суму як аргумент і додає
 // її до балансу, а також метод `withdraw`, який приймає суму і зменшує баланс,
 // якщо сума не перевищує наявний баланс. Метод має повертати новий баланс.
+const bankAccount = {
+  bankName: "PrivatBank",
+  accountNumber: 4149497812345678,
+  balance: 1000,
+
+  deposit(amount) {
+    this.balance += amount;
+    return this.balance;
+  },
+
+  withdraw(amount) {
+    if (amount <= this.balance) {
+      this.balance -= amount;
+    }
+    return this.balance;
+  },
+};
 
 // ---
 
@@ -40,13 +57,27 @@ const user = {
 // `calculateArea`, який повертає площу прямокутника, та метод
 // `calculatePerimeter`, який повертає периметр.
 
+// див. файл module-4-1.js !!!
+
 // ---
 
 // **4. Завдання:**
 // Створи об'єкт із властивостями `name` (рядок), `position` (рядок) та `salary`
 // (число). Додай метод `getInfo`, який повертає рядок у форматі:
 // `[name] працює на позиції [position] із зарплатою [salary]`.
-
+const worker = {
+  name: "",
+  position: "",
+  salary: 0,
+  setInfo(name, position, salary) {
+    this.name = name;
+    this.position = position;
+    this.salary = salary;
+  },
+  getInfo() {
+    return `${this.name} працює на позиції ${this.position} із зарплатою ${this.salary}`;
+  },
+};
 // ---
 
 // **5. Завдання:**
