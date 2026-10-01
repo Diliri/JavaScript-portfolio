@@ -103,6 +103,19 @@ const countryInfo = {
 // Створи об'єкт із властивостями `itemName` (рядок), `quantity` (число) та
 // `pricePerItem` (число). Додай метод `calculateTotalPrice`, який повертає
 // загальну вартість, множачи `quantity` на `pricePerItem`.
+const cartItem = {
+  itemName: "",
+  quantity: 0,
+  pricePerItem: 0,
+  setItem(itemName, quantity, pricePerItem) {
+    this.itemName = itemName;
+    this.quantity = quantity;
+    this.pricePerItem = pricePerItem;
+  },
+  calculateTotalPrice() {
+    return this.quantity * this.pricePerItem;
+  },
+};
 
 // ---
 
