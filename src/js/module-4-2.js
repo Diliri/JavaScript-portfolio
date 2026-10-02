@@ -123,7 +123,17 @@ const cartItem = {
 // Створи об'єкт із властивостями `email` (рядок) та `password` (рядок). Додай
 // метод `checkLogin`, який приймає два аргументи (email і password) і повертає
 // `true`, якщо вони збігаються зі значеннями об'єкта.
-
+const usersCredentials = {
+  email: "",
+  password: "",
+  setInfo(email, password) {
+    this.email = email;
+    this.password = password;
+  },
+  checkLogin(email, password) {
+    return this.email === email && this.password === password;
+  },
+};
 // ---
 
 // **8. Завдання:**
