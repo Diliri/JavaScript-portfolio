@@ -141,7 +141,26 @@ const usersCredentials = {
 // приймає значення `"C"` або `"F"`). Додай метод `convertToCelsius`, який
 // переводить температуру з Фаренгейта в Цельсій, якщо `unit` дорівнює `"F"`, та
 // метод `convertToFahrenheit`, який робить зворотнє перетворення.
+const temperatureConverter = {
+  temperature: 32,
+  unit: "F",
 
+  convertToCelsius() {
+    if (this.unit === "F") {
+      this.temperature = Number(((this.temperature - 32) / 1.8).toFixed(1));
+      this.unit = "C";
+    }
+    return this.temperature;
+  },
+
+  convertToFahrenheit() {
+    if (this.unit === "C") {
+      this.temperature = Number((this.temperature * 1.8 + 32).toFixed(1));
+      this.unit = "F";
+    }
+    return this.temperature;
+  },
+};
 // ---
 
 // **9. Завдання:**
