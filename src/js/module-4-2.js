@@ -167,6 +167,16 @@ const temperatureConverter = {
 // Створи об'єкт із властивостями `vehicleType` (рядок), `fuelType` (рядок) та
 // `fuelEfficiency` (число). Додай метод `calculateRange`, який приймає кількість
 // пального (число) і повертає відстань, яку можна подолати.
+const vehicle = {
+  vehicleType: "auto",
+  fuelType: "A-95",
+  fuelEfficiency: 14, // наприклад, 14 км на 1 літр пального
+
+  calculateRange(fuelAmount) {
+    const range = fuelAmount * this.fuelEfficiency;
+    return Number(range.toFixed(1));
+  },
+};
 
 // ---
 
