@@ -182,10 +182,21 @@ const vehicle = {
 
 // **10. Завдання:**
 // Створи об'єкт із властивостями `studentName` (рядок), `grade` (число) та
-// `subject` (рядок). Додай метод `upgradeGrade`, який збільшує значення `grade` на
-// 1, та метод `getReport`, який повертає рядок у форматі:
+// `subject` (рядок). Додай метод `upgradeGrade`, який збільшує значення `grade`
+// на 1, та метод `getReport`, який повертає рядок у форматі:
 // `[studentName] має оцінку [grade] з предмету [subject]`.
+const student = {
+  studentName: "Alice",
+  grade: 100,
+  subject: "Math",
+  upgradeGrade() {
+    return (this.grade += 1);
+  },
 
+  getReport() {
+    return `${this.studentName} має оцінку ${this.grade} з предмету ${this.subject}`;
+  },
+};
 // ---
 
 // **11. Завдання:**
