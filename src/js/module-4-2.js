@@ -203,7 +203,13 @@ const student = {
 // Створи об'єкт із властивостями `movieTitle` (рядок), `director` (рядок) та
 // `duration` (число, у хвилинах). Додай метод `getMovieInfo`, який повертає опис
 // фільму у форматі: `[movieTitle], режисер [director], тривалість [duration] хв`.
-
+const movie = {
+  movieTitle: "Chainsaw Man",
+  director: "Ryū Nakayama",
+  duration: 24,
+  getMovieInfo() {
+    return `${this.movieTitle}, режисер ${this.director}, тривалість ${this.duration} хв`;
+};
 // ---
 
 // **12. Завдання:**
