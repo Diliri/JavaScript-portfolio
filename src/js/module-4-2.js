@@ -209,19 +209,37 @@ const movie = {
   duration: 24,
   getMovieInfo() {
     return `${this.movieTitle}, режисер ${this.director}, тривалість ${this.duration} хв`;
+  },
 };
 // ---
 
 // **12. Завдання:**
 // Створи об'єкт із властивостями `username` (рядок), `isOnline` (булеве значення).
 // Додай метод `toggleStatus`, який змінює значення `isOnline` на протилежне.
-
+const newUser = {
+  username: "Shrek",
+  isOnline: false,
+  toggleStatus() {
+    this.isOnline = !this.isOnline;
+    return this.isOnline; // Необов'язково, але можна повернути новий стан
+  },
+};
 // ---
 
 // **13. Завдання:**
 // Створи об'єкт із властивостями `day` (число), `month` (число) та `year` (число).
 // Додай метод `formatDate`, який повертає рядок у форматі: `DD/MM/YYYY`.
+const date = {
+  day: 7,
+  month: 10,
+  year: 2026,
 
+  formatDate() {
+    const d = String(this.day).padStart(2, "0");
+    const m = String(this.month).padStart(2, "0");
+    return `${d}/${m}/${this.year}`;
+  },
+};
 // ---
 
 // **14. Завдання:**
