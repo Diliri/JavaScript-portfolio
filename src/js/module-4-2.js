@@ -246,19 +246,37 @@ const date = {
 // Створи об'єкт із властивостями `colorName` (рядок) та `isPrimary` (булеве
 // значення). Додай метод `checkPrimary`, який повертає `true`, якщо `colorName` є
 // одним із базових кольорів: `"red"`, `"blue"`, `"yellow"`.
-
+const color = {
+  colorName: "green",
+  checkPrimary() {
+    const name = this.colorName.toLowerCase();
+    return name === "red" || name === "blue" || name === "yellow";
+  },
+};
 // ---
 
 // **15. Завдання:**
 // Створи об'єкт із властивостями `animalType` (рядок), `age` (число). Додай метод
 // `isAdult`, який повертає `true`, якщо вік тварини більше або дорівнює 2.
-
+const animal = {
+  animalType: "cat",
+  age: 3,
+  isAdult() {
+    return this.age >= 2;
+  },
+};
 // ---
 
 // **16. Завдання:**
 // Створи об'єкт із властивостями `planetName` (рядок), `diameter` (число, у км).
 // Додай метод `getRadius`, який повертає радіус планети, ділячи `diameter` на 2.
-
+const planet = {
+  planetName: "Earth",
+  diameter: 12742,
+  getRadius() {
+    return this.diameter / 2;
+  },
+};
 // ---
 
 // **17. Завдання:**
