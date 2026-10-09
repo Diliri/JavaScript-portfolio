@@ -283,27 +283,68 @@ const planet = {
 // Створи об'єкт із властивостями `songName` (рядок), `artist` (рядок) та
 // `duration` (число, у хвилинах). Додай метод `getSongInfo`, який повертає рядок:
 // `"Song '[songName]' by [artist], [duration] minutes"`.
+const song = {
+  songName: "Horns",
+  artist: "Bryce Fox",
+  duration: 3.38,
 
+  getSongInfo() {
+    return `Song '${this.songName}' by ${this.artist}, ${this.duration} minutes`;
+  },
+};
 // ---
 
 // **18. Завдання:**
 // Створи об'єкт із властивостями `cityName` (рядок), `population` (число) та
 // `isCapital` (булеве значення). Додай метод `getCityInfo`, який повертає опис
 // міста у форматі: `[cityName] має населення [population]. Столиця: [isCapital]`.
-
+const city = {
+  cityName: "Біла Церква",
+  population: 216000,
+  isCapital: false,
+  getCityInfo() {
+    return `${this.cityName} має населення ${this.population}. Столиця: ${this.isCapital}`;
+  },
+};
 // ---
 
 // **19. Завдання:**
 // Створи об'єкт із властивостями `username` (рядок), `level` (число). Додай метод
 // `levelUp`, який збільшує рівень на 1, та метод `getUserInfo`, який повертає
 // рядок: `[username], рівень: [level]`.
+const usersLVL = {
+  username: "",
+  level: 0,
+  setInfo(username, level) {
+    this.username = username;
+    this.level = level;
+  },
 
+  getUserInfo() {
+    return `${this.username}, рівень: ${this.level}`;
+  },
+
+  levelUp() {
+    return (this.level += 1);
+  },
+};
 // ---
 
 // **20. Завдання:**
 // Створи об'єкт із властивостями `eventName` (рядок), `date` (рядок). Додай метод
 // `getEventInfo`, який повертає рядок: `Подія: [eventName], Дата: [date]`.
+const event = {
+  eventName: "",
+  date: "",
+  setInfo(eventName, date) {
+    this.eventName = eventName;
+    this.date = date;
+  },
 
+  getEventInfo() {
+    return `Подія: ${this.eventName}, Дата: ${this.date}`;
+  },
+};
 // ---
 
 // **21. Завдання:**
