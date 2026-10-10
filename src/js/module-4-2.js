@@ -350,19 +350,47 @@ const event = {
 // **21. Завдання:**
 // Створи об'єкт із властивостями `length` (число) та `width` (число). Додай метод
 // `isSquare`, який повертає `true`, якщо довжина і ширина однакові.
+const square = {
+  length: 0,
+  width: 0,
+  setSides(length, width) {
+    this.length = length;
+    this.width = width;
+  },
 
+  isSquare() {
+    return this.length === this.width;
+  },
+};
 // ---
 
 // **22. Завдання:**
 // Створи об'єкт із властивостями `temperature` (число). Додай метод `isFreezing`,
 // який повертає `true`, якщо температура менше або дорівнює 0.
+const freeze = {
+  temperature: 0,
+  setSides(temperature) {
+    this.temperature = temperature;
+  },
 
+  isFreezing() {
+    return this.temperature <= 0;
+  },
+};
 // ---
 
 // **23. Завдання:**
 // Створи об'єкт із властивостями `score` (число). Додай метод `resetScore`, який
 // встановлює значення `score` на 0.
-
+const score = {
+  score: 0,
+  setSides(score) {
+    this.score = score;
+  },
+  resetScore() {
+    this.score = 0;
+  },
+};
 // ---
 
 // **24. Завдання:**
