@@ -35,8 +35,11 @@ function toBuyOrNotToBuy(amount, price) {
 // якщо більше 25 - "Спекотно".
 // ```
 function isHot(temp) {
-  if (temp < 0) return "Замерзає";
-  if (temp <= 25) return "Нормальна температура";
+  if (temp < 0) {
+    return "Замерзає";
+  } else if (temp < 25) {
+    return "Нормальна температура";
+  }
   return "Спекотно";
 }
 // ```

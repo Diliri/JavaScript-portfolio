@@ -453,20 +453,48 @@ const publishedBook = {
 // **28. Завдання:**
 // Створи об'єкт із властивостями `email` (рядок). Додай метод `isGmail`, який
 // повертає `true`, якщо email містить домен `"@gmail.com"`.
-
+const gmail = {
+  email: "",
+  setEmail(email) {
+    this.email = email;
+  },
+  isGmail() {
+    return this.email.endsWith("@gmail.com");
+  },
+};
 // ---
 
 // **29. Завдання:**
 // Створи об'єкт із властивостями `x` (число), `y` (число). Додай метод
 // `calculateDistance`, який повертає відстань від початку координат (формула:
 // √(x² + y²)).
-
+const distance = {
+  x: 0,
+  y: 0,
+  setXY(x, y) {
+    this.x = x;
+    this.y = y;
+  },
+  calculateDistance() {
+    return Math.sqrt(this.x ** 2 + this.y ** 2);
+  },
+};
 // ---
 
 // **30. Завдання:**
 // Створи об'єкт із властивостями `hours` (число), `minutes` (число). Додай метод
 // `convertToMinutes`, який повертає загальну кількість хвилин.
-
+const minutes = {
+  hours: 0,
+  minutes: 0,
+  setInfo(h, m) {
+    this.hours = h;
+    this.minutes = m;
+  },
+  convertToMinutes() {
+    return this.hours * 60 + this.minutes;
+  },
+};
 // ---
 
 // ```
