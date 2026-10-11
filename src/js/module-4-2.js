@@ -396,25 +396,58 @@ const score = {
 // **24. Завдання:**
 // Створи об'єкт із властивостями `name` (рядок), `price` (число). Додай метод
 // `discount`, який приймає відсоток знижки і повертає нову ціну.
-
+const price = {
+  name: "",
+  price: 0,
+  setInfo(name, price) {
+    this.name = name;
+    this.price = price;
+  },
+  discount(percent) {
+    const discountedPrice = this.price - (this.price * percent) / 100;
+    return discountedPrice;
+  },
+};
 // ---
 
 // **25. Завдання:**
 // Створи об'єкт із властивостями `weight` (число, у кг). Додай метод
 // `convertToPounds`, який повертає вагу в фунтах (1 кг = 2.20462 фунта).
-
+const pounds = {
+  weight: 0,
+  setWeight(weight) {
+    this.weight = weight;
+  },
+  convertToPounds() {
+    return this.weight * 2.20462;
+  },
+};
 // ---
 
 // **26. Завдання:**
 // Створи об'єкт із властивостями `speed` (число). Додай метод `increaseSpeed`,
 // який приймає число і додає його до швидкості.
-
+const speed = {
+  speed: 0,
+  increaseSpeed(speed) {
+    this.speed += speed;
+  },
+};
 // ---
 
 // **27. Завдання:**
 // Створи об'єкт із властивостями `title` (рядок), `isPublished` (булеве значення).
 // Додай метод `togglePublish`, який змінює значення `isPublished` на протилежне.
-
+const publishedBook = {
+  title: "",
+  isPublished: false,
+  setBook(title) {
+    this.title = title;
+  },
+  togglePublish() {
+    return (this.isPublished = !this.isPublished);
+  },
+};
 // ---
 
 // **28. Завдання:**
