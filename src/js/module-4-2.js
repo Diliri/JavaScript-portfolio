@@ -514,10 +514,56 @@ const minutes = {
 // - додати гроші на рахунок
 // - зняти гроші з рахунка
 // ```
+// ==========================================
+// 1. Система контролю банку
+// ==========================================
+const bankSystem = {
+  users: [], // [{ userId, fio, password }]
+  accounts: [], // [{ userId, accountNumber, value }]
 
+  addUser(userId, fio, password) {
+    this.users.push({ userId, fio, password });
+  },
+
+  deleteUser(userId) {
+    this.users = this.users.filter((user) => user.userId !== userId);
+    this.accounts = this.accounts.filter((acc) => acc.userId !== userId);
+  },
+
+  createAccount(userId, accountNumber, initialValue = 0) {
+    this.accounts.push({ userId, accountNumber, value: initialValue });
+  },
+
+  deleteAccount(accountNumber) {
+    this.accounts = this.accounts.filter(
+      (acc) => acc.accountNumber !== accountNumber
+    );
+  },
+
+  deposit(accountNumber, amount) {
+    const account = this.accounts.find(
+      (acc) => acc.accountNumber === accountNumber
+    );
+    if (account) {
+      account.value += amount;
+      return true;
+    }
+    return false;
+  },
+  withdraw(accountNumber, amount) {
+    const account = this.accounts.find(
+      (acc) => acc.accountNumber === accountNumber
+    );
+    if (account && account.value >= amount) {
+      account.value -= amount;
+      return true;
+    }
+    return false;
+  },
+};
 // ---
 
-// Менеджер завдань: Створіть функцію яка створює та повертає обьект завдання.
+// Менеджер завдань: Створіть функцію яка створює та повертає об'єкт завдання.
 // Об'єкт task, який буде містити властивості Name, deadline, priority та done.
 // Додайте методи для відмітки завдання як виконаного та для виведення
 // інформаціїпро завдання.
