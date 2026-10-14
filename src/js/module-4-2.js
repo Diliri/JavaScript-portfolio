@@ -550,6 +550,7 @@ const bankSystem = {
     }
     return false;
   },
+
   withdraw(accountNumber, amount) {
     const account = this.accounts.find(
       (acc) => acc.accountNumber === accountNumber
@@ -564,9 +565,37 @@ const bankSystem = {
 // ---
 
 // Менеджер завдань: Створіть функцію яка створює та повертає об'єкт завдання.
-// Об'єкт task, який буде містити властивості Name, deadline, priority та done.
+// Об'єкт task, який буде містити властивості name, deadline, priority та done.
 // Додайте методи для відмітки завдання як виконаного та для виведення
-// інформаціїпро завдання.
+// інформації про завдання.
+// ==========================================
+// 2. Менеджер завдань (factory function)
+// ==========================================
+function createTask(name, deadline, priority) {
+  return {
+    name,
+    deadline,
+    priority,
+    done: false,
+
+    setInfo(name, deadline, priority) {
+      this.name = name;
+      this.deadline = deadline;
+      this.priority = priority;
+    },
+
+    markAsDone() {
+      this.done = true;
+    },
+
+    getInfo() {
+      return `Завдання: ${this.name} | Дедлайн: ${this.deadline} | Пріоритет: ${
+        this.priority
+      } | Статус: ${this.done ? "Виконано" : "У процесі"}`;
+      //console.log(task.getInfo())
+    },
+  };
+}
 
 // ---
 
