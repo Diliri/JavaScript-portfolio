@@ -602,7 +602,27 @@ function createTask(name, deadline, priority) {
 // Каталог товарів: Створіть каталог товарів, де кожен товар буде об'єктом з
 // властивостями назва, ціна та кількість. Додайте методи для додавання товару,
 // видалення товару та підрахунку загальної вартості.
+// ==========================================
+// 3. Каталог товарів
+// ==========================================
+const productCatalog = {
+  products: [], // [{ name, price, quantity }]
 
+  addProduct(name, price, quantity) {
+    this.products.push({ name, price, quantity });
+  },
+
+  deleteProduct(name) {
+    this.products = this.products.filter((item) => item.name !== name);
+  },
+
+  getTotalValue() {
+    return this.products.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  },
+};
 // ---
 
 // Система реєстрації: Створіть систему реєстрації користувачів, де кожен
