@@ -628,7 +628,29 @@ const productCatalog = {
 // Система реєстрації: Створіть систему реєстрації користувачів, де кожен
 // користувач буде об'єктом з властивостями ім'я, email, пароль тощо. Додайте метод
 // для перевірки введеного пароля при вході.
+const registration = {
+  users: [], // [{ name, email, passwd }]
 
+  addUser(name, email, passwd) {
+    this.users.push({ name, email, passwd });
+  },
+
+  deleteUser(name) {
+    this.users = this.users.filter((item) => item.name !== name);
+  },
+
+  checkCredentials(email, passwd) {
+    // Шукаємо користувача за email
+    const user = this.users.find((item) => item.email === email);
+
+    // Якщо користувач знайшовся і його пароль збігається — повертаємо true
+    if (user && user.passwd === passwd) {
+      return true;
+    }
+
+    return false;
+  },
+};
 // ---
 
 // Онлайн-книга: Створіть програму для ведення списку прочитаних книг. Кожна книга
