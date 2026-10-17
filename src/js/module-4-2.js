@@ -685,7 +685,26 @@ const bookTracker = {
 // Ігровий персонаж: Створіть об'єкт, який представляє ігрового персонажа. Додайте
 // властивості, такі як ім'я, рівень, здоров'я, атака тощо. Реалізуйте методи для
 // атаки інших персонажів та відновлення здоров'я.
+// ==========================================
+// 6. Ігровий персонаж
+// ==========================================
+const character = {
+  name: "Hero",
+  level: 1,
+  health: 100,
+  maxHealth: 100,
+  attackPower: 15,
 
+  attack(target) {
+    if (target && typeof target.health === "number") {
+      target.health = Math.max(0, target.health - this.attackPower);
+    }
+  },
+
+  heal(amount) {
+    this.health = Math.min(this.maxHealth, this.health + amount);
+  },
+};
 // ---
 
 // Список контактів: Створіть програму для управління списком контактів. Кожен
