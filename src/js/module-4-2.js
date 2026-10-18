@@ -710,7 +710,28 @@ const character = {
 // Список контактів: Створіть програму для управління списком контактів. Кожен
 // контакт буде об'єктом з властивостями ім'я, телефон, email тощо. Додайте методи
 // для додавання, видалення та пошуку контактів.
+// ==========================================
+// 7. Список контактів
+// ==========================================
+const contactBook = {
+  contacts: [], // [{ name, phone, email }]
 
+  addContact(name, phone, email) {
+    this.contacts.push({ name, phone, email });
+  },
+
+  deleteContact(name) {
+    this.contacts = this.contacts.filter((c) => c.name !== name);
+  },
+
+  findContact(query) {
+    return this.contacts.filter(
+      (c) =>
+        c.name.toLowerCase().includes(query.toLowerCase()) ||
+        c.phone.includes(query)
+    );
+  },
+};
 // ---
 
 // Календар подій: Створіть календар подій, де кожна подія буде об'єктом з
