@@ -737,7 +737,24 @@ const contactBook = {
 // Календар подій: Створіть календар подій, де кожна подія буде об'єктом з
 // властивостями назва, дата, місце та повідомлення. Додайте методи для додавання
 // події, видалення події та перегляду подій на певну дату.
+// ==========================================
+// 8. Календар подій
+// ==========================================
+const eventCalendar = {
+  events: [], // [{ title, date, location, message }]
 
+  addEvent(title, date, location, message) {
+    this.events.push({ title, date, location, message });
+  },
+
+  deleteEvent(title) {
+    this.events = this.events.filter((e) => e.title !== title);
+  },
+
+  getEventsByDate(date) {
+    return this.events.filter((e) => e.date === date);
+  },
+};
 // ---
 
 // Онлайн-магазин: Створіть онлайн-магазин з можливістю додавання товарів у кошик
