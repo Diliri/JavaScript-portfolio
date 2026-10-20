@@ -761,13 +761,69 @@ const eventCalendar = {
 // та оформлення замовлення. Кожен товар буде об'єктом з властивостями назва, ціна,
 // наявність тощо. Реалізуйте методи для додавання товару у кошик, підрахунку
 // загальної вартості та оформлення замовлення.
+// ==========================================
+// 9. Онлайн-магазин
+// ==========================================
+const onlineShop = {
+  products: [], // [{ name, price, available }]
+  cart: [], // [{ name, price, quantity }]
 
+  addProduct(name, price, available = true) {
+    this.products.push({ name, price, available });
+  },
+
+  addToCart(productName, quantity = 1) {
+    const product = this.products.find(
+      (p) => p.name === productName && p.available
+    );
+    if (!product) return false;
+
+    const cartItem = this.cart.find((item) => item.name === productName);
+    if (cartItem) {
+      cartItem.quantity += quantity;
+    } else {
+      this.cart.push({ name: product.name, price: product.price, quantity });
+    }
+    return true;
+  },
+
+  calculateTotal() {
+    return this.cart.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  },
+
+  checkout() {
+    const total = this.calculateTotal();
+    this.cart = []; // Очищаємо кошик після замовлення
+    return `Замовлення оформлено! Сума до сплати: ${total}`;
+  },
+};
 // ---
 
 // Пошук інформації: Створіть програму, яка дозволить шукати інформацію в тексті.
 // Ви створюєте об'єкт зі збереженими текстовими даними та методами для пошуку
 // заданого слова або фрази у тексті.
+// ==========================================
+// 10. Пошук інформації в тексті
+// ==========================================
+const textSearcher = {
+  textData:
+    "JavaScript є однією з найпопулярніших мов. Вона дуже гнучка та цікава.",
 
+  // Повертає масив речень, де зустрічається шукане слово
+  findSentencesWithWord(word) {
+    const sentences = this.textData.split("."); // Розбиваємо текст на речення
+
+    return sentences.filter((sentence) =>
+      sentence.toLowerCase().includes(word.toLowerCase())
+    );
+  },
+};
+
+console.log(textSearcher.findSentencesWithWord("гнучка"));
+// Поверне: [" Вона дуже гнучка та цікава"]
 // ---
 
 // Банківський рахунок: Створіть об'єкт account, який міститиме інформацію про
