@@ -830,7 +830,39 @@ console.log(textSearcher.findSentencesWithWord("гнучка"));
 // банківський рахунок користувача, таку як ім'я, баланс та історія транзакцій.
 // Додайте методи для додавання та витрати коштів, а також для виведення історії
 // транзакцій.
+// ==========================================
+// 11. Банківський рахунок
+// ==========================================
+const account = {
+  ownerName: "Олександр",
+  balance: 1000,
+  transactions: [], // [{ type: 'deposit'|'withdraw', amount, date }]
 
+  deposit(amount) {
+    if (amount <= 0) return;
+    this.balance += amount;
+    this.transactions.push({
+      type: "deposit",
+      amount,
+      date: new Date().toISOString(),
+    });
+  },
+
+  withdraw(amount) {
+    if (amount <= 0 || amount > this.balance) return false;
+    this.balance -= amount;
+    this.transactions.push({
+      type: "withdraw",
+      amount,
+      date: new Date().toISOString(),
+    });
+    return true;
+  },
+
+  getTransactionHistory() {
+    return this.transactions;
+  },
+};
 // # This
 
 // ```js
