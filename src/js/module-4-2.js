@@ -939,16 +939,27 @@ callLater(bound);
 
 // Результат: { name: 'Bound context' }
 // //!======================================================
-// // TASK№4
-// const user = {
-//   name: 'Alice',
-//   showName: function () {
-//     console.log(this.name);
-//   },
-// };
+// TASK№4
+const user1 = {
+  name: "Alice",
+  showName: function () {
+    console.log(this.name);
+  },
+};
 
-// setTimeout(user.showName, 100);
+setTimeout(user1.showName, 100);
 // //!======================================================
+// Втрата контексту в setTimeout
+// Як це працює: Коли ми передаємо user.showName у setTimeout, ми передаємо
+// лише посилання на саму функцію, а не сам об'єкт. Через 100 мс
+// setTimeout викликає цю функцію як самостійну(в глобальному контексті).
+
+// Втрата контексту: this більше не вказує на user (у нестрогому режимі
+// він стає глобальним об'єктом window, а в строговому undefined).
+// У результаті this.name намагається взяти ім'я з глобального об'єкта,
+// де його немає.
+
+// Результат: undefined
 // //!======================================================
 // // TASK№5
 // function showThis(a, b) {
