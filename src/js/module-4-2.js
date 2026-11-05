@@ -1007,22 +1007,29 @@ obj1.show();
 // Результат: Спочатку виведеться 'Object', а потім 'Global'
 // (або undefined у strict mode).
 // //!======================================================
-// // TASK№7
-// const a = {
-//   name: 'A',
-//   say: function () {
-//     console.log(this.name);
-//   },
-// };
+// TASK№7
+const a = {
+  name: "A",
+  say: function () {
+    console.log(this.name);
+  },
+};
 
-// const b = {
-//   name: 'B',
-// };
+const b = {
+  name: "B",
+};
 
-// const sayFromA = a.say;
-// sayFromA.call(b);
+const sayFromA = a.say;
+sayFromA.call(b);
 // //!======================================================
+// Позиціонування методу та call
+// const sayFromA = a.say; — ми записали посилання на метод об'єкта a
+// у змінну(сама функція вже втратила прямий зв'язок з об'єктом a).
 
+// sayFromA.call(b); — за допомогою методу .call() ми примусово викликаємо
+// цю функцію, передаючи їй контекст b.
+
+// Результат: B
 // //!======================================================
 // // TASK№8
 // const obj = {
