@@ -1031,22 +1031,30 @@ sayFromA.call(b);
 
 // Результат: B
 // //!======================================================
-// // TASK№8
-// const obj = {
-//   name: 'Nested',
-//   outer: function () {
-//     return {
-//       inner: () => {
-//         console.log(this.name);
-//       },
-//     };
-//   },
-// };
+// TASK№8
+const obj2 = {
+  name: "Nested",
+  outer: function () {
+    return {
+      inner: () => {
+        console.log(this.name);
+      },
+    };
+  },
+};
 
-// const innerFn = obj.outer().inner;
-// innerFn();
+const innerFn = obj2.outer().inner;
+innerFn();
 // //!======================================================
+// Що відбувається:
 
+// Викликається obj2.outer(). У цей момент this всередині outer дорівнює obj2.
+
+// Стрілочна функція inner створюється всередині outer, тому вона "забирає" this з outer (тобто obj2).
+
+// Навіть попри те, що innerFn викликається окремо, стрілочна функція не міняє свій лексичний this.
+
+// Результат: 'Nested'.
 // //!======================================================
 // // TASK№9
 // const obj = {
