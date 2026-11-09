@@ -1056,33 +1056,42 @@ innerFn();
 
 // Результат: 'Nested'.
 // //!======================================================
-// // TASK№9
-// const obj = {
-//   method: function () {
-//     console.log(this);
-//   },
-// };
+// TASK№9
+const obj3 = {
+  method: function () {
+    console.log(this);
+  },
+};
 
-// const other = {
-//   method: obj.method,
-// };
+const other = {
+  method: obj3.method,
+};
 
-// const copy = other.method;
-// copy();
+const copy = other.method;
+copy();
 // //!======================================================
+// Що відбувається: Функція копіюється у змінну copy і викликається напряму (copy()).
+// Не важливо, в скількох об'єктах вона попередньо лежала (obj, other) — важливий момент виклику.
 
+// Результат: this посилається на глобальний об'єкт або undefined.
 // //!======================================================
-// // TASK№10
-// function A() {
-//   this.name = 'Function A';
-//   return {
-//     name: 'Returned Object',
-//     getThis: function () {
-//       console.log(this.name);
-//     },
-//   };
-// }
+// TASK№10
+function A() {
+  this.name = "Function A";
+  return {
+    name: "Returned Object",
+    getThis: function () {
+      console.log(this.name);
+    },
+  };
+}
 
-// const result = new A();
-// result.getThis();
+const result = new A();
+result.getThis();
 // ```
+// Що відбувається: Якщо конструктор функції(new A()) явно повертає об'єкт (return { ... }),
+// то оператор new ігнорує створений контекст this і повертає саме цей кастомний об'єкт.
+// Тому result стає об'єктом { name: 'Returned Object', ... }.
+// Коли ми викликаємо result.getThis(), this вказує на сам об'єкт result.
+
+// Результат: 'Returned Object'.
