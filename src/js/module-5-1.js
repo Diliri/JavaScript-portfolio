@@ -217,6 +217,28 @@ const swapped = swapElements(numbers, [0, 3], [1, 4]);
 
 console.log(swapped); // [40, 50, 30, 10, 50] (залежно від пар індексів)
 // 1. [Kata](https://www.codewars.com/kata/55a1528cca4a6d4c5a0000e3/train/javascript)
+// значення за замовчуванням (default parameter)
+// Вимога: Виклик defaultExample(3) має повернути 10.
+function defaultExample(x, y = 7) {
+  return x + y;
+}
+// залишок параметрів (rest parameters)
+// Вимога: Виклик restExample(9) має повернути 0.
+function restExample(x, ...y) {
+  return y.length;
+}
+// оператор поширення (spread operator)
+// Вимога: Виклик spreadExample(...[1, 1, 1]) розгортає масив у три аргументи (x = 1, y = 1, z = 1).
+// Найпростіший спосіб перевірити, чи дійсно всі три елементи масиву успішно дійшли до функції
+// як окремі параметри x, y та z — це скласти їх разом: return x + y + z;.
+function spreadExample(x, y, z) {
+  return x + y + z;
+}
+spreadExample(...[1, 1, 1]);
+// Просте правило для запам'ятовування:
+// Rest (Залишок): Збирає багато розрізнених аргументів в один масив (упаковує).
+// Spread (Поширення): Розгортає один масив на окремі елементи (розпаковує).
+
 // 1. [Kata](https://www.codewars.com/kata/5983cba828b2f1fd55000114)
 // 1. [Kata](https://www.codewars.com/kata/5848565e273af816fb000449)
 // 1. [Kata](https://www.codewars.com/kata/581e014b55f2c52bb00000f8)
