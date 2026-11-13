@@ -253,7 +253,55 @@ oddOne([2, 16, 98, 10, 13, 78]); // => 4
 oddOne([4, -8, 98, -12, -7, 90, 100]); // => 4
 oddOne([2, 4, 6, 8]); // => -1
 // 1. [Kata](https://www.codewars.com/kata/5848565e273af816fb000449)
-// 1. [Kata](https://www.codewars.com/kata/581e014b55f2c52bb00000f8)
+// Опис:
+// Зашифруй це!
+
+// Ваше завдання — створити секретні повідомлення, які можна розшифрувати за допомогою ката
+// «Розшифруй це!» (Decipher this!). Умови такі:
+
+// Повідомлення являє собою рядок, що складається зі слів, розділених пробілами.
+// Необхідно зашифрувати кожне слово в повідомленні, дотримуючись таких правил:
+// Першу літеру слід замінити на її ASCII-код.
+// Другу літеру потрібно поміняти місцями з останньою літерою.
+// Для спрощення: у вхідних даних немає спеціальних символів.
+// encryptThis "Hello" == "72olle"
+// encryptThis "good" == "103doo"
+// encryptThis "hello world" == "104olle 119drlo"
+
+// Щоб розв'язати цю задачу, найкраще розбити рядок на масив слів,
+// обробити кожне слово окремо за допомогою.map(), а потім знову з'єднати у рядок.
+function encryptThis(text) {
+  return text
+    .split(" ") // 1. Розбиваємо рядок на масив слів по пробілу
+    .map((word) => {
+      // 2. Отримуємо ASCII-код першої літери
+      const firstCharCode = word.charCodeAt(0);
+
+      // Якщо слово складається з 1 літери (наприклад, "A")
+      if (word.length === 1) {
+        return `${firstCharCode}`;
+      }
+
+      // Якщо слово з 2 літер (наприклад, "go" -> "103o")
+      if (word.length === 2) {
+        return `${firstCharCode}${word[1]}`;
+      }
+
+      // Для слів від 3 літер і більше:
+      const secondChar = word[1]; // друга літера
+      const lastChar = word[word.length - 1]; // остання літера
+      const middle = word.slice(2, -1); // усе, що між другою та останньою
+
+      // Складаємо слово за правилами: код першої + остання + середина + друга
+      return `${firstCharCode}${lastChar}${middle}${secondChar}`;
+    })
+    .join(" "); // 3. З'єднуємо зашифровані слова назад через пробіл
+}
+
+// Перевірка:
+console.log(encryptThis("Hello")); // "72olle"
+console.log(encryptThis("good")); // "103doo"
+console.log(encryptThis("hello world")); // "104olle 119drlo"// 1. [Kata](https://www.codewars.com/kata/581e014b55f2c52bb00000f8)
 // 1. [Kata](https://www.codewars.com/kata/59df2f8f08c6cec835000012)
 // 1. [Kata](https://www.codewars.com/kata/5514e5b77e6b2f38e0000ca9)
 // 1. [Kata](https://www.codewars.com/kata/5783ef69202c0ee4cb000265)
