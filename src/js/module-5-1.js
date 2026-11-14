@@ -301,7 +301,67 @@ function encryptThis(text) {
 // Перевірка:
 console.log(encryptThis("Hello")); // "72olle"
 console.log(encryptThis("good")); // "103doo"
-console.log(encryptThis("hello world")); // "104olle 119drlo"// 1. [Kata](https://www.codewars.com/kata/581e014b55f2c52bb00000f8)
+console.log(encryptThis("hello world")); // "104olle 119drlo"//
+// 1.[Kata](https://www.codewars.com/kata/581e014b55f2c52bb00000f8)
+// Опис:
+// Розшифруй це!
+
+// Ваше завдання — розшифрувати секретні повідомлення, якібули створені за допомогою ката
+// «Зашифруй це!» (encrypt this!). Умови такі:
+
+// Повідомлення являє собою рядок, що складається зі слів, розділених пробілами.
+// Необхідно розшифрувати кожне слово в повідомленні, дотримуючись таких правил:
+// Першу літеру слід повернути за її ASCII-кодом.
+// Другу літеру потрібно поміняти місцями з останньою літерою.
+// Для спрощення: у вхідних даних немає спеціальних символів.
+// decryptThis "72olle" == "Hello"
+// decryptThis "103doo" == "good"
+// decryptThis "104olle 119drlo" == "hello world"
+
+// Щоб розв'язати цю задачу, найкраще розбити рядок на масив слів,
+// обробити кожне слово окремо за допомогою.map(), а потім знову з'єднати у рядок.
+function decryptThis(text) {
+  return text
+    .split(" ") // 1. Розбиваємо рядок на масив слів по пробілу
+    .map((word) => {
+      // 2. Витягуємо числову частину (ASCII-код) з початку слова
+      // Шукаємо всі цифри на початку за допомогою регулярного виразу
+      const charCodeMatch = word.match(/^\d+/);
+      if (!charCodeMatch) return word; // на випадок порожнього рядка
+
+      const charCode = Number(charCodeMatch[0]); // сам код як число (наприклад, 72)
+      const firstChar = String.fromCharCode(charCode); // відновлена перша літера ("H")
+
+      // Залишок слова після цифрового ASCII-коду
+      const rest = word.slice(charCodeMatch[0].length); // наприклад, "olle"
+
+      // Якщо після коду нічого не залишилось (слово складалося лише з цифр/коду)
+      if (rest.length === 0) {
+        return firstChar;
+      }
+
+      // Якщо в залишку лише 1 літера (наприклад, "103o" -> код 103 і літеру "o")
+      if (rest.length === 1) {
+        return firstChar + rest;
+      }
+
+      // Для решти слів: перша + остання літера залишку + середина залишку + друга літера залишку
+      // За правилом шифрування, другу і останню літери міняли місцями,
+      // тому при розшифруванні міняємо їх назад!
+      const lastChar = rest[rest.length - 1]; // стала другою
+      const secondChar = rest[0]; // стала останньою
+      const middle = rest.slice(1, -1); // середина не змінювалася
+
+      return `${firstChar}${lastChar}${middle}${secondChar}`;
+    })
+    .join(" "); // 3. З'єднуємо розшифровані слова назад через пробіл
+}
+
+// Перевірка:
+console.log(decryptThis("72olle")); // "Hello"
+console.log(decryptThis("103doo")); // "good"
+console.log(decryptThis("104olle 119drlo")); // "hello world"
+
 // 1. [Kata](https://www.codewars.com/kata/59df2f8f08c6cec835000012)
 // 1. [Kata](https://www.codewars.com/kata/5514e5b77e6b2f38e0000ca9)
 // 1. [Kata](https://www.codewars.com/kata/5783ef69202c0ee4cb000265)
