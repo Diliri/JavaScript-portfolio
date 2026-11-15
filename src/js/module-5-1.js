@@ -363,6 +363,40 @@ console.log(decryptThis("103doo")); // "good"
 console.log(decryptThis("104olle 119drlo")); // "hello world"
 
 // 1. [Kata](https://www.codewars.com/kata/59df2f8f08c6cec835000012)
+// ката з Codewars під назвою "Meeting"
+// Джон запросив друзів. Його список:
+// s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
+// Напишіть пограму, яка makes this string uppercase and gives it sorted in alphabetical order by last name.
+// When the last names are the same, sort them by first name. Last name and first name of a guest come in the result between parentheses separated by a comma.
+
+// The result of function meeting(s) will be:
+
+// "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
+function meeting(s) {
+  return s
+    .toUpperCase() // 1. Переводимо весь рядок у верхній регістр
+    .split(";") // 2. Розбиваємо рядок на масив окремих гостей за крапкою з комою
+    .map((guest) => {
+      const [first, last] = guest.split(":"); // Розділяємо ім'я та прізвище
+      return { first, last };
+    })
+    .sort((a, b) => {
+      // 3. Сортуємо спочатку за прізвищем, потім за ім'ям
+      if (a.last !== b.last) {
+        return a.last.localeCompare(b.last);
+      }
+      return a.first.localeCompare(b.first);
+    })
+    .map((guest) => `(${guest.last}, ${guest.first})`) // 4. Форматуємо у вигляді (ПРІЗВИЩЕ, ІМ'Я)
+    .join(""); // 5. З'єднуємо все назад у єдиний рядок без пробілів
+}
+
+// Приклад перевірки:
+const s =
+  "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
+console.log(meeting(s));
+// Виведе: "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
+
 // 1. [Kata](https://www.codewars.com/kata/5514e5b77e6b2f38e0000ca9)
 // 1. [Kata](https://www.codewars.com/kata/5783ef69202c0ee4cb000265)
 // 1. [Kata](https://www.codewars.com/kata/60cc93db4ab0ae0026761232)
