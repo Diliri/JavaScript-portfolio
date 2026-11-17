@@ -476,4 +476,66 @@ function plusOneToArr(arr) {
 }
 
 // 1. [Kata](https://www.codewars.com/kata/5783ef69202c0ee4cb000265)
+// IndexOf Array in Array
+// Опис:
+
+// Метод indexOf у JavaScript не працює з масивами як вхідними даними. Це пов'язано з тим, що [1,2] === [1,2] у JavaScript повертає false. Багато інших мов мають подібні особливості.
+
+// Однак іноді буває корисно здійснити пошук масиву. Напишіть функцію, яка шукає масив у двовимірному масиві та повертає індекс першого збіжного елемента. Якщо збігів немає, ваша функція повинна повернути -1.
+
+// Дивіться приклади:
+
+// JavaScript
+// var arrayToSearch = [[1,2],[3,4],[5,6]];
+// var query = [1,2]; // => 0
+// query = [5,6]; // => 2
+// query = [9,2]; // => -1
+// Від вас вимагатиметься перевірити вхідні дані за такими критеріями:
+
+// кожен елемент масиву, в якому здійснюється пошук, має бути масивом;
+
+// кожен підмасив у двовимірному масиві повинен мати довжину два; та
+
+// запит (query) має бути масивом довжиною два.
+
+// Якщо вхідні дані недійсні, ваша функція повинна викинути помилку (throw an Error).
+
+// Дивіться приклади:
+
+// JavaScript
+// var arrayToSearch = [[1,2],[3,4],[5,6],[7,8,9]]; // => викидає помилку (throw Error)
+// arrayToSearch = [1,2,3,4,5,6]; // => викидає помилку (throw Error)
+// arrayToSearch = [[1,2],[3,4],[5,6]]; // => дійсні вхідні дані (valid input)
+// var query = [1,2]; // => дійсні вхідні дані (valid input)
+// query = 5; // => викидає помилку (throw Error)
+// query = [9,2,1]; // => викидає помилку (throw Error)
+
+// моє неправильне рішення
+function searchAnArr1(arrayToSearch, query) {
+  if (typeof arrayToSearch.every((arr) => arr.lenth === 2) === Object) {
+    return arrayToSearch.find(query).indexOf(query);
+  }
+  return "throw Error";
+}
+
+//рішення Gemini
+function searchAnArr(arrayToSearch, query) {
+  // 1. Валідація query: має бути масивом довжиною 2
+  if (!Array.isArray(query) || query.length !== 2) {
+    throw new Error("Invalid query format");
+  }
+
+  // 2. Валідація arrayToSearch: кожен елемент має бути масивом довжиною 2
+  if (
+    !Array.isArray(arrayToSearch) ||
+    !arrayToSearch.every((arr) => Array.isArray(arr) && arr.length === 2)
+  ) {
+    throw new Error("Invalid arrayToSearch format");
+  }
+
+  // 3. Пошук індексу елемента (порівнюємо елементи за значенням)
+  return arrayToSearch.findIndex(
+    (arr) => arr[0] === query[0] && arr[1] === query[1]
+  );
+}
 // 1. [Kata](https://www.codewars.com/kata/60cc93db4ab0ae0026761232)
