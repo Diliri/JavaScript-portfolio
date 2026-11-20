@@ -929,17 +929,28 @@ const getMaleHeroes = (list) =>
   list.filter((hero) => hero.appearance.gender === "Male");
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких
 //    eyeColor дорівнює 'Blue'.
-
+const getHeroesWithBlueEyes = (list) =>
+  list.filter((hero) => hero.appearance.eyeColor === "Blue");
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких
 //    hairColor дорівнює 'Black'.
+const getHeroesWithBlackHair = (list) =>
+  list.filter((hero) => hero.appearance.hairColor === "Black");
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких
 //    race дорівнює 'Human'.
+const getHeroesWithHumanRace = (list) =>
+  list.filter((hero) => hero.appearance.race === "Human");
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких
 //    publisher дорівнює 'Marvel Comics'.
+const getHeroesFromMarvel = (list) =>
+  list.filter((hero) => hero.biography.publisher === "Marvel Comics");
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких
 //    powerstats.power більше ніж 80.
+const getPowerHeroes = (list) =>
+  list.filter((hero) => hero.powerstats.power > 80);
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких
 //    powerstats.intelligence менше ніж 50.
+const getLowIntelligenceHeroes = (list) =>
+  list.filter((hero) => hero.powerstats.intelligence < 50);
 // 1. Напиши функцію, яка приймає масив героїв та повертає героя з name рівним
 //    'Doctor Strange'.
 const findDoctorStrange = (list) =>
