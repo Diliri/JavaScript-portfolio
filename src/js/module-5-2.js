@@ -957,16 +957,37 @@ const findDoctorStrange = (list) =>
   list.find((hero) => hero.name === "Doctor Strange");
 // 1. Напиши функцію, яка приймає масив героїв та повертає героя з максимальним
 //    значенням powerstats.strength.
+const getMaxPowerValue = (list) => {
+  return Math.max(...list.map((hero) => hero.powerstats.power));
+};
 // 1. Напиши функцію, яка приймає масив героїв та повертає героя з мінімальним
 //    значенням powerstats.speed.
+const getMinSpeedValue = (list) => {
+  return Math.min(...list.map((hero) => hero.powerstats.speed));
+};
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких
 //    appearance.weight[1] менше 75 кг.
+// Герої з appearance.weight[1] менше 75 кг (без "0 kg" / невідомої ваги)
+const getLightHeroes = (list) =>
+  list.filter((hero) => {
+    const kg = parseInt(hero.appearance.weight?.[1], 10);
+    return !Number.isNaN(kg) && kg > 0 && kg < 75;
+  });
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких
 //    appearance.height[1] більше 180 см.
+// Герої з appearance.height[1] більше 180 см
+const getTallHeroes = (list) =>
+  list.filter((hero) => {
+    const cm = parseInt(hero.appearance.height?.[1], 10);
+    return !Number.isNaN(cm) && cm > 180;
+  });
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив назв
 //    biography.firstAppearance усіх героїв.
+const getFirstAppearances = (list) =>
+  list.map((hero) => hero.biography.firstAppearance);
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив назв
 //    work.occupation усіх героїв.
+const getOccupations = (list) => list.map((hero) => hero.work.occupation);
 // 1. Напиши функцію, яка приймає масив героїв та сортує його за зростанням
 //    powerstats.intelligence.
 // 1. Напиши функцію, яка приймає масив героїв та сортує його за спаданням
@@ -986,14 +1007,22 @@ const findDoctorStrange = (list) =>
 //    рівним 226.
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив довжин масиву
 //    aliases кожного героя.
+const getAliasesLengths = (list) =>
+  list.map((hero) => hero.biography.aliases.length);
 // 1. Напиши функцію, яка приймає масив героїв та повертає героя, у якого найбільше
 //    aliases.
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких
 //    кількість aliases більше ніж 3.
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких в
 //    полі work.occupation значення дорівнює "-".
+// Герої, у яких work.occupation дорівнює "-"
+const getHeroesWithoutOccupation = (list) =>
+  list.filter((hero) => hero.work.occupation === "-");
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, які мають
 //    у groupAffiliation згадку про 'Avengers'.
+// Герої, які мають у groupAffiliation згадку про 'Avengers'
+const getAvengersHeroes = (list) =>
+  list.filter((hero) => hero.connections.groupAffiliation.includes("Avengers"));
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив, де кожен елемент
 //    — рядок виду: "NAME has POWER power".
 const formatHeroPower = (list) =>
