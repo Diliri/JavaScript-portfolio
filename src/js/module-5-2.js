@@ -971,11 +971,11 @@ const getMinSpeedValue = (list) => {
 const getLightHeroes = (list) =>
   list.filter((hero) => {
     const kg = parseInt(hero.appearance.weight?.[1], 10);
+    // Що буде для '- lb' або undefined? parseInt(undefined, 10) поверне NaN, тому далі і використовуємо перевірку !Number.isNaN(kg)
     return !Number.isNaN(kg) && kg > 0 && kg < 75;
   });
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких
 //    appearance.height[1] більше 180 см.
-// Герої з appearance.height[1] більше 180 см
 const getTallHeroes = (list) =>
   list.filter((hero) => {
     const cm = parseInt(hero.appearance.height?.[1], 10);
@@ -990,9 +990,18 @@ const getFirstAppearances = (list) =>
 const getOccupations = (list) => list.map((hero) => hero.work.occupation);
 // 1. Напиши функцію, яка приймає масив героїв та сортує його за зростанням
 //    powerstats.intelligence.
+const sortIntelligenceHeroes = (list) =>
+  list.toSorted(
+    //якщо a менше за b, різниця від'ємна, тож a стоїть перед b
+    (a, b) => a.powerstats.intelligence - b.powerstats.intelligence
+  );
 // 1. Напиши функцію, яка приймає масив героїв та сортує його за спаданням
 //    powerstats.power.
+const sortPowerHeroes = (list) =>
+  list.toSorted((a, b) => b.powerstats.power - a.powerstats.power);
 // 1. Напиши функцію, яка приймає масив героїв та сортує його за алфавітом по name.
+const sortNameHeroes = (list) =>
+  list.toSorted((a, b) => a.name.localeCompare(b.name));
 // 1. Напиши функцію, яка приймає масив героїв та перевіряє, чи є хоча б один герой
 //    з alignment рівним 'bad'.
 // 1. Напиши функцію, яка приймає масив героїв та перевіряє, чи всі герої мають
