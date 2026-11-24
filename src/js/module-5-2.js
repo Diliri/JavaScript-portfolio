@@ -1004,16 +1004,28 @@ const sortNameHeroes = (list) =>
   list.toSorted((a, b) => a.name.localeCompare(b.name));
 // 1. Напиши функцію, яка приймає масив героїв та перевіряє, чи є хоча б один герой
 //    з alignment рівним 'bad'.
+const hasBadHero = (list) =>
+  list.some((hero) => hero.biography.alignment === "bad");
 // 1. Напиши функцію, яка приймає масив героїв та перевіряє, чи всі герої мають
 //    alignment рівним 'good'.
+const areAllHeroesGood = (list) =>
+  list.every((hero) => hero.biography.alignment === "good");
 // 1. Напиши функцію, яка приймає масив героїв та перевіряє, чи є хоча б один герой
 //    з powerstats.intelligence рівним 100.
+const hasMaxIntelligenceHero = (list) =>
+  list.some((hero) => hero.powerstats.intelligence === 100);
 // 1. Напиши функцію, яка приймає масив героїв та перевіряє, чи всі герої мають
 //    race, відмінний від null.
+const doAllHeroesHaveRace = (list) =>
+  list.every((hero) => hero.appearance.race !== null);
 // 1. Напиши функцію, яка приймає масив героїв та перевіряє, чи є хоча б один герой
 //    вагою більше ніж 150 кг.
+const hasHeroHeavierThan150Kg = (list) =>
+  list.some((hero) => parseInt(hero.appearance.weight[1], 10) > 150);
 // 1. Напиши функцію, яка приймає масив героїв та повертає індекс героя з id
 //    рівним 226.
+const findHeroIndexById226 = (list) =>
+  list.findIndex((hero) => hero.id === 226);
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив довжин масиву
 //    aliases кожного героя.
 const getAliasesLengths = (list) =>
