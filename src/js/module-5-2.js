@@ -1032,8 +1032,28 @@ const getAliasesLengths = (list) =>
   list.map((hero) => hero.biography.aliases.length);
 // 1. Напиши функцію, яка приймає масив героїв та повертає героя, у якого найбільше
 //    aliases.
+const getHeroWithBiggestAliases = (list) =>
+  list.toSorted(
+    (a, b) => b.biography.aliases.length - a.biography.aliases.length
+  )[0];
+// Далі варіант ШІ
+// Герой, у якого найбільше aliases
+const getHeroWithBiggestAliases2 = (list) => {
+  if (!list.length) return null;
+
+  return list.reduce(
+    // Оскільки початкове значення акумулятора не передано, на першому кроці bestHero автоматично стає першим елементом масиву (list[0]), а hero — другим (list[1])
+    (bestHero, hero) =>
+      hero.biography.aliases.length > bestHero.biography.aliases.length
+        ? hero
+        : bestHero
+    // Якщо у hero псевдонімів стільки ж або менше, залишаємо попереднього лідера bestHero без змін.
+  );
+};
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких
 //    кількість aliases більше ніж 3.
+const getHeroesWithMoreThanThreeAliases = (list) =>
+  list.filter((hero) => hero.biography.aliases.length > 3);
 // 1. Напиши функцію, яка приймає масив героїв та повертає масив героїв, у яких в
 //    полі work.occupation значення дорівнює "-".
 // Герої, у яких work.occupation дорівнює "-"
