@@ -1070,18 +1070,67 @@ const formatHeroPower = (list) =>
   list.map((hero) => `${hero.name} has ${hero.powerstats.power} power`);
 // 1. Напиши функцію, яка повертає масив імен лише тих супергероїв, яким більше 20
 //    років. Масив має бути відсортований за алфавітом.
+const getAdultHeroNamesSorted = (list) =>
+  list
+    .filter((hero) => typeof hero.age === "number" && hero.age > 20)
+    .toSorted((a, b) => a.name.localeCompare(b.name))
+    .map((hero) => hero.name);
 // 1. Напиши функцію, яка повертає масив об'єктів з властивостями name та age лише
 //    тих супергероїв, яким менше 20 років. Масив має бути відсортований за віком
 //    супергероя (від меншого до більшого).
+const getYoungHeroesSortedByAge = (list) =>
+  list
+    .filter((hero) => typeof hero.age === "number" && hero.age < 20)
+    .toSorted((a, b) => a.age - b.age)
+    .map(({ name, age }) => ({ name, age }));
+//  Замість того щоб писати (hero) => ({ name: hero.name, age: hero.age }), ми одразу витягуємо потрібні поля name і age у параметрі через деструктуризацію:
+
+// ({ name, age }) означає: «візьми елемент масиву (об'єкт героя) і дістань із нього властивості name та age у локальні змінні з такими ж іменами».
+
+// Навіщо круглі дужки навколо ({ name, age }) у поверненні:
+// У стрілочній функції без ключового слова return фігурні дужки { ... } за замовчуванням означають тіло функції, а не об'єкт:
+
+// КОД JavaScript
+// ПОМИЛКА: JS думає, що всередині { ... } — блок коду, а не об'єкт,
+// і бачить невалідну мітку `name:` -> SyntaxError
+// .map(({ name, age }) => { name, age })
+
+// ПРАВИЛЬНО: круглі дужки змушують JS трактувати { ... } як вираз-об'єкт
+// .map(({ name, age }) => ({ name, age }))
+
 // 1. Напиши функцію, яка повертає масив імен супергероїв, у яких
 //    powerstats.strength більше 80. Відсортуй результат за зменшенням сили
 //    (strength).
+const getStrongHeroNamesDesc = (list) =>
+  list
+    .filter((hero) => hero.powerstats.strength > 80)
+    .toSorted((a, b) => b.powerstats.strength - a.powerstats.strength)
+    .map((hero) => hero.name);
 // 1. Напиши функцію, яка повертає масив імен супергероїв, у яких race === "Human"
 //    та intelligence більше 70. Результат має бути відсортований за зростанням
 //    intelligence.
+const getSmartHumanNamesAsc = (list) =>
+  list
+    .filter(
+      (hero) =>
+        hero.appearance.race === "Human" && hero.powerstats.intelligence > 70
+    )
+    .toSorted((a, b) => a.powerstats.intelligence - b.powerstats.intelligence)
+    .map((hero) => hero.name);
 // 1. Напиши функцію, яка повертає масив об'єктів типу { name, publisher }, але
 //    лише для героїв, у яких alignment === 'good' і intelligence більше 60.
 //    Відсортуй масив за ім'ям.
+const getGoodSmartHeroesByName = (list) =>
+  list
+    .filter(
+      (hero) =>
+        hero.biography.alignment === "good" && hero.powerstats.intelligence > 60
+    )
+    .toSorted((a, b) => a.name.localeCompare(b.name))
+    .map((hero) => ({
+      name: hero.name,
+      publisher: hero.biography.publisher,
+    }));
 // 1. Напиши функцію, яка повертає масив назв першої появи (firstAppearance) лише
 //    унікальних коміксів, де вперше з'явились герої з publisher === 'Marvel
 //    Comics' та powerstats.speed більше 60. Результат відсортуй алфавітно.
