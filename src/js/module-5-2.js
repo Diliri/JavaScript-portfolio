@@ -1134,6 +1134,22 @@ const getGoodSmartHeroesByName = (list) =>
 // 1. Напиши функцію, яка повертає масив назв першої появи (firstAppearance) лише
 //    унікальних коміксів, де вперше з'явились герої з publisher === 'Marvel
 //    Comics' та powerstats.speed більше 60. Результат відсортуй алфавітно.
+const getUniqueMarvelFastFirstAppearances = (list) => {
+  const appearances = list
+    .filter(
+      (hero) =>
+        hero.biography.publisher === 'Marvel Comics' &&
+        hero.powerstats.speed > 60 &&
+        hero.biography.firstAppearance
+    )
+    .map((hero) => hero.biography.firstAppearance);
+
+  return [...new Set(appearances)].toSorted((a, b) => a.localeCompare(b));
+};
+
+// add to module-5-2.js seventh part to heroes (unique firstAppearance sorted alphabetically)
+
+
 // 1. Напиши функцію, яка повертає масив { name, aliasesCount } — кількість
 //    псевдонімів для кожного героя, де aliasesCount > 3. Відсортуй результат за
 //    спаданням кількості псевдонімів.
