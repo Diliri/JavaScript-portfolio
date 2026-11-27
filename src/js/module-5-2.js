@@ -1147,7 +1147,6 @@ const getUniqueMarvelFastFirstAppearances = (list) => {
   return [...new Set(appearances)].toSorted((a, b) => a.localeCompare(b));
 };
 
-
 // 1. Напиши функцію, яка повертає масив { name, aliasesCount } — кількість
 //    псевдонімів для кожного героя, де aliasesCount > 3. Відсортуй результат за
 //    спаданням кількості псевдонімів.
