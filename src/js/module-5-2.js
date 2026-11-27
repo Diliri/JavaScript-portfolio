@@ -1138,7 +1138,7 @@ const getUniqueMarvelFastFirstAppearances = (list) => {
   const appearances = list
     .filter(
       (hero) =>
-        hero.biography.publisher === 'Marvel Comics' &&
+        hero.biography.publisher === "Marvel Comics" &&
         hero.powerstats.speed > 60 &&
         hero.biography.firstAppearance
     )
@@ -1150,6 +1150,14 @@ const getUniqueMarvelFastFirstAppearances = (list) => {
 // 1. Напиши функцію, яка повертає масив { name, aliasesCount } — кількість
 //    псевдонімів для кожного героя, де aliasesCount > 3. Відсортуй результат за
 //    спаданням кількості псевдонімів.
+const getHeroesWithManyAliasesSorted = (list) =>
+  list
+    .map((hero) => ({
+      name: hero.name,
+      aliasesCount: hero.biography.aliases.length,
+    }))
+    .filter((item) => item.aliasesCount > 3)
+    .toSorted((a, b) => b.aliasesCount - a.aliasesCount);
 // 1. Напиши функцію, яка повертає масив імен героїв, чия вага (у kg) менша за 80
 //    кг та сила (strength) більше 60. Результат відсортуй за зростанням ваги.
 // 1. Напиши функцію, яка повертає масив з імен та довжиною рядка occupation для
