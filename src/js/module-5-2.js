@@ -1147,8 +1147,6 @@ const getUniqueMarvelFastFirstAppearances = (list) => {
   return [...new Set(appearances)].toSorted((a, b) => a.localeCompare(b));
 };
 
-// add to module-5-2.js seventh part to heroes (unique firstAppearance sorted alphabetically)
-
 
 // 1. Напиши функцію, яка повертає масив { name, aliasesCount } — кількість
 //    псевдонімів для кожного героя, де aliasesCount > 3. Відсортуй результат за
