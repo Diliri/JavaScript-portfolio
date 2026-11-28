@@ -1160,6 +1160,22 @@ const getHeroesWithManyAliasesSorted = (list) =>
     .toSorted((a, b) => b.aliasesCount - a.aliasesCount);
 // 1. Напиши функцію, яка повертає масив імен героїв, чия вага (у kg) менша за 80
 //    кг та сила (strength) більше 60. Результат відсортуй за зростанням ваги.
+const getLightStrongHeroNamesSorted = (list) =>
+  list
+    .map((hero) => ({
+      name: hero.name,
+      strength: hero.powerstats.strength,
+      weightKg: parseInt(hero.appearance.weight?.[1], 10),
+    }))
+    .filter(
+      (hero) =>
+        !Number.isNaN(hero.weightKg) &&
+        hero.weightKg > 0 &&
+        hero.weightKg < 80 &&
+        hero.strength > 60
+    )
+    .toSorted((a, b) => a.weightKg - b.weightKg)
+    .map((hero) => hero.name);
 // 1. Напиши функцію, яка повертає масив з імен та довжиною рядка occupation для
 //    кожного героя. Відфільтруй лише тих, у кого occupation довше ніж 10 символів.
 //    Відсортуй результат за довжиною occupation.
